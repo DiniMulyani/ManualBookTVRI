@@ -280,15 +280,15 @@ header p {
     .full-height-sidebar {
         /* Anda bisa menambahkan logika untuk menyembunyikan/menampilkan sidebar
            dengan JavaScript jika ingin membuat tombol toggle */
-        /* Contoh:
+        
         position: fixed;
         left: -280px; 
         transition: left 0.3s ease;
-        */
+        
        /* Untuk sementara, kita buat lebarnya 0 agar tidak mengganggu */
-       /* width: 0;
+       width: 0;
        padding: 0;
-       overflow: hidden; */
+       overflow: hidden; 
        /* Atau Anda bisa memilih untuk tidak menyembunyikannya */
     }
     .main-content-area {
