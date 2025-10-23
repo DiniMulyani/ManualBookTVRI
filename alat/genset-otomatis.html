@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP Generator Set Otomatis</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+
+    <script>
+        (function() {
+            const FONT_SIZE_KEY = 'manualBookFontSize';
+            const DEFAULT_FONT_SIZE = 'medium';
+            const savedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
+            
+            if (savedSize !== DEFAULT_FONT_SIZE) {
+                // Terapkan kelas ke tag <html>
+                document.documentElement.classList.add(`font-size-${savedSize}`);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>SOP Generator Set (Genset) Otomatis</h1>
+        
+        <div class="font-controls">
+            <button id="font-decrease" class="font-button" onclick="changeFontSize('decrease')">A-</button>
+            <button id="font-reset" class="font-button" onclick="changeFontSize('reset')">A</button>
+            <button id="font-increase" class="font-button" onclick="changeFontSize('increase')">A+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali ke Daftar Alat</a>
+        
+      <button id="tombolFavorit" class="tombol tombol-favorit" 
+                onclick="toggleFavorite('audio-mixer-abc', 'Audio Mixer Tipe ABC', 'Prosedur standar untuk mixing audio siaran.')">
+            Tambahkan ke Favorit ⭐
+        </button>
+
+        <button class="tombol tombol-cetak" onclick="window.print()">
+            🖨️ Cetak SOP
+        </button>
+
+        <div class="sop-layout-container">
+
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#k3">1. Peringatan K3</a>
+                <a href="#prosedur">2. Prosedur Manual Start</a>
+                <a href="#checklist">2A. Checklist Harian</a>
+                <a href="#video">3. Video Tutorial</a>
+                <a href="#wizard">4. Wizard Troubleshooting</a>
+                <a href="#galeri">5. Galeri Foto</a>
+                <a href="#dokumen">6. Dokumen PDF</a>
+                <a href="#catatan">7. Catatan Pribadi</a>
+            </nav>
+
+            <div class="content-sop" id="content-sop">
+                
+                <h2 id="k3">1. Peringatan Keselamatan Kerja (K3) ⚠️</h2>
+                <div class="warning">
+                    <strong>BAHAYA! TEGANGAN TINGGI & EMISI GAS BUANG!</strong>
+                    <ul>
+                        <li>Pastikan Genset beroperasi di area berventilasi baik.</li>
+                        <li>Jangan pernah menyentuh koneksi listrik atau panel kontrol dengan tangan basah.</li>
+                        <li>Pastikan mode transfer switch (ATS/Manual) dikunci sebelum memulai/mematikan.</li>
+                    </ul>
+                </div>
+
+                <h2 id="prosedur">2. Prosedur Penyalaan Manual Saat Darurat</h2>
+                <ol>
+                    <li>Pindahkan *Transfer Switch* dari posisi **AUTO** ke **MANUAL**.</li>
+                    <li>Cek bahan bakar, oli, dan air pendingin pada Genset.</li>
+                    <li>Tekan tombol **START** pada panel kontrol Genset.</li>
+                    <li>Tunggu Genset mencapai RPM dan tegangan stabil (sekitar 10-15 detik).</li>
+                    <li>Pindahkan *Transfer Switch* ke posisi **GENSET**.</li>
+                    <li>Monitor tegangan (V) dan Frekuensi (Hz) di panel utama.</li>
+                </ol>
+
+                <h2 id="checklist">2A. Checklist Harian Genset</h2>
+                <div class="checklist-container">
+                    <p>Lakukan pemeriksaan Genset harian saat *standby*.</p>
+                    <div id="checklist-genset">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="genset-item-1" onchange="saveChecklistStatus('genset-item-1', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Tingkat bahan bakar di atas 80%.</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="genset-item-2" onchange="saveChecklistStatus('genset-item-2', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Tingkat oli mesin di rentang normal.</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="genset-item-3" onchange="saveChecklistStatus('genset-item-3', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Pemeriksaan pemanasan Genset (Warm-up) mingguan telah dilakukan.</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="genset-item-4" onchange="saveChecklistStatus('genset-item-4', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Indikator baterai dalam kondisi baik.</span>
+                        </label>
+                    </div>
+                    <button class="tombol tombol-reset" onclick="resetChecklist('genset')">Reset Checklist</button>
+                </div>
+                
+                <h2 id="video">3. Video Tutorial Prosedur Pematian Normal</h2>
+                <p>Prosedur mematikan Genset setelah listrik PLN kembali normal.</p>
+                <div class="video-container">
+                    <video controls>
+                        <source src="../aset/video/genset-shutdown.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                </div>
+                
+                <h2 id="wizard">4. Wizard Troubleshooting: Genset Gagal Start</h2>
+                <div class="wizard-container">
+                    <p>Gunakan panduan ini jika Genset tidak menyala saat tombol START ditekan.</p>
+                    <div id="wizard-genset-container">
+                        <div class="wizard-step" data-step="1">
+                            <h4>Langkah 1: Apakah ada alarm di panel kontrol (misalnya Low Oil, High Temp)?</h4>
+                            <button class="tombol wizard-tombol-ya" onclick="showWizardSolution('genset', 'solusi-alarm')">Ya, ada alarm</button>
+                            <button class="tombol wizard-tombol-tidak" onclick="nextWizardStep('genset', 2)">Tidak, panel normal</button>
+                        </div>
+
+                        <div class="wizard-step" data-step="2" style="display: none;">
+                            <h4>Langkah 2: Apakah switch Baterai/Aki terhubung (ON)?</h4>
+                            <button class="tombol wizard-tombol-ya" onclick="nextWizardStep('genset', 3)">Ya, ON</button>
+                            <button class="tombol wizard-tombol-tidak" onclick="showWizardSolution('genset', 'solusi-aki')">Tidak, OFF/Longgar</button>
+                        </div>
+                        
+                        <div class="wizard-step" data-step="3" style="display: none;">
+                            <h4>Langkah 3: Apakah Anda mendengar suara 'klik' dari starter motor saat menekan tombol START?</h4>
+                            <button class="tombol wizard-tombol-ya" onclick="showWizardSolution('genset', 'solusi-fuel')">Ya, klik</button>
+                            <button class="tombol wizard-tombol-tidak" onclick="showWizardSolution('genset', 'solusi-starter')">Tidak ada suara/diam</button>
+                        </div>
+
+                        <div class="wizard-solusi" data-solusi="solusi-alarm" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Alarm Aktif</h4>
+                            <p>Perbaiki kondisi yang diindikasikan oleh alarm (misalnya, tambahkan oli, biarkan pendinginan). Jangan paksa Genset menyala jika alarm terkait kerusakan mesin (Engine Protect).</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('genset')">Mulai Wizard Kembali</button>
+                        </div>
+                        
+                        <div class="wizard-solusi" data-solusi="solusi-aki" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Koneksi Baterai</h4>
+                            <p>Pastikan switch baterai (isolator) dalam posisi ON. Kencangkan terminal aki jika longgar. Aki yang lemah juga bisa menyebabkan gagal start.</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('genset')">Mulai Wizard Kembali</button>
+                        </div>
+
+                        <div class="wizard-solusi" data-solusi="solusi-fuel" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Masalah Bahan Bakar</h4>
+                            <p>Jika starter berputar tetapi mesin tidak menyala, cek jalur bahan bakar. Pastikan ada solar di tangki dan buka *valve* bahan bakar jika tertutup.</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('genset')">Mulai Wizard Kembali</button>
+                        </div>
+                        
+                        <div class="wizard-solusi" data-solusi="solusi-starter" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Kegagalan Starter Motor/Solenoid</h4>
+                            <p>Jika tidak ada respon listrik, starter motor atau solenoid mungkin rusak. Cek sekering utama di panel kontrol Genset. **Hubungi Teknisi Listrik.**</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('genset')">Mulai Wizard Kembali</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h2 id="galeri">5. Galeri Foto & Panel Kontrol Genset</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/genset-unit.jpg" alt="Unit Genset Lengkap" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/genset-panel.jpg" alt="Panel Kontrol Genset Digital" onclick="bukaModal(this.src)">
+                </div>
+
+                <h2 id="dokumen">6. Dokumen Pendukung (PDF)</h2>
+                <p>Jadwal maintenance rutin dan spesifikasi Genset.</p>
+                <a href="../aset/dokumen/genset-maintenance.pdf" target="_blank" class="tombol tombol-pdf">
+                    Buka Jadwal Maintenance Genset (PDF)
+                </a>
+
+                <h2 id="catatan">7. Catatan Pribadi Anda</h2>
+                <div class="notes-container">
+                    <label for="personalNotesGenset">Tulis catatan, pengamatan, atau prosedur *fast start* Genset.</label>
+                    <textarea id="personalNotesGenset" placeholder="Masukkan catatan Anda di sini..." onkeyup="saveNote('Genset', this.value)"></textarea>
+                </div>
+
+            </div> </div> </div> <div id="modalGambar" class="modal">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script src="../script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Memuat status favorit saat halaman dimuat
+            updateFavoriteButton('genset-auto');
+            
+            // Memuat status checklist dan catatan
+            loadChecklistStatus('genset'); 
+            loadNote('Genset');
+
+             // Memuat wizard di langkah pertama
+            resetWizard('genset');
+        });
+    </script>
+</body>
+</html>

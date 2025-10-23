@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP Main Distribution Frame (MDF)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+
+    <script>
+        (function() {
+            const FONT_SIZE_KEY = 'manualBookFontSize';
+            const DEFAULT_FONT_SIZE = 'medium';
+            const savedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
+            
+            if (savedSize !== DEFAULT_FONT_SIZE) {
+                // Terapkan kelas ke tag <html>
+                document.documentElement.classList.add(`font-size-${savedSize}`);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>SOP Main Distribution Frame (MDF) & Patch Panel</h1>
+        
+        <div class="font-controls">
+            <button id="font-decrease" class="font-button" onclick="changeFontSize('decrease')">A-</button>
+            <button id="font-reset" class="font-button" onclick="changeFontSize('reset')">A</button>
+            <button id="font-increase" class="font-button" onclick="changeFontSize('increase')">A+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali ke Daftar Alat</a>
+        
+        <button id="tombolFavorit" class="tombol tombol-favorit" 
+                onclick="toggleFavorite('audio-mixer-abc', 'Audio Mixer Tipe ABC', 'Prosedur standar untuk mixing audio siaran.')">
+            Tambahkan ke Favorit ⭐
+        </button>
+
+        <button class="tombol tombol-cetak" onclick="window.print()">
+            🖨️ Cetak SOP
+        </button>
+        <div class="sop-layout-container">
+
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#k3">1. Peringatan K3</a>
+                <a href="#prosedur">2. Prosedur Patching</a>
+                <a href="#checklist">2A. Checklist Patching</a>
+                <a href="#video">3. Video Tutorial</a>
+                <a href="#wizard">4. Wizard Troubleshooting</a>
+                <a href="#galeri">5. Galeri Foto</a>
+                <a href="#dokumen">6. Dokumen PDF</a>
+                <a href="#catatan">7. Catatan Pribadi</a>
+            </nav>
+
+            <div class="content-sop" id="content-sop">
+                
+                <h2 id="k3">1. Peringatan Keselamatan Kerja (K3) ⚠️</h2>
+                <div class="warning">
+                    <strong>PERHATIAN! LINGKUNGAN KABEL PADAT!</strong>
+                    <ul>
+                        <li>Pastikan Anda menggunakan penerangan yang cukup.</li>
+                        <li>Jangan tarik kabel Patching terlalu keras; dapat merusak konektor permanen.</li>
+                        <li>Selalu gunakan label yang jelas pada setiap kabel yang ditambahkan atau dipindahkan.</li>
+                    </ul>
+                </div>
+
+                <h2 id="prosedur">2. Prosedur Standar Patching</h2>
+                <ol>
+                    <li>Verifikasi Port Input dan Port Tujuan yang dibutuhkan (lihat diagram alir).</li>
+                    <li>Ambil kabel *patch cord* dengan panjang yang sesuai (jangan terlalu panjang/pendek).</li>
+                    <li>Hubungkan Patch Cord: Port **Sumber** $\rightarrow$ Port **Tujuan** di Patch Panel.</li>
+                    <li>Catat perubahan koneksi di logbook atau sistem dokumentasi digital.</li>
+                    <li>Uji sinyal (continuity test) untuk memastikan koneksi berhasil.</li>
+                </ol>
+
+                <h2 id="checklist">2A. Checklist Patching Sinyal</h2>
+                <div class="checklist-container">
+                    <p>Lakukan pemeriksaan ini setiap kali ada perubahan koneksi.</p>
+                    <div id="checklist-mdf">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="mdf-item-1" onchange="saveChecklistStatus('mdf-item-1', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Port Sumber dan Tujuan di MDF sudah dikonfirmasi.</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="mdf-item-2" onchange="saveChecklistStatus('mdf-item-2', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Patch cord terpasang kuat, tidak longgar.</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="mdf-item-3" onchange="saveChecklistStatus('mdf-item-3', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Perubahan koneksi sudah dicatat di Logbook/Dokumentasi.</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-checklist-id="mdf-item-4" onchange="saveChecklistStatus('mdf-item-4', this.checked)">
+                            <span class="checkmark"></span>
+                            <span class="checklist-text">Sinyal di ujung tujuan terkonfirmasi (continuity test OK).</span>
+                        </label>
+                    </div>
+                    <button class="tombol tombol-reset" onclick="resetChecklist('mdf')">Reset Checklist</button>
+                </div>
+                
+                <h2 id="video">3. Video Tutorial Teknik Cable Management</h2>
+                <p>Kerapian adalah kunci MDF. Pelajari cara merapikan kabel patch cord.</p>
+                <div class="video-container">
+                    <video controls>
+                        <source src="../aset/video/cable-management.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                </div>
+                
+                <h2 id="wizard">4. Wizard Troubleshooting: No Signal Setelah Patching</h2>
+                <div class="wizard-container">
+                    <p>Gunakan panduan ini jika sinyal hilang setelah melakukan patching.</p>
+                    <div id="wizard-mdf-container">
+                        <div class="wizard-step" data-step="1">
+                            <h4>Langkah 1: Apakah koneksi Patch Cord longgar di salah satu ujung?</h4>
+                            <button class="tombol wizard-tombol-ya" onclick="showWizardSolution('mdf', 'solusi-longgar')">Ya, Longgar</button>
+                            <button class="tombol wizard-tombol-tidak" onclick="nextWizardStep('mdf', 2)">Tidak, Sudah Kencang</button>
+                        </div>
+
+                        <div class="wizard-step" data-step="2" style="display: none;">
+                            <h4>Langkah 2: Apakah Anda yakin Port Sumber di Patch Panel memiliki sinyal?</h4>
+                            <button class="tombol wizard-tombol-ya" onclick="nextWizardStep('mdf', 3)">Ya, Sudah Dicek</button>
+                            <button class="tombol wizard-tombol-tidak" onclick="showWizardSolution('mdf', 'solusi-sumber')">Tidak Tahu/Kosong</button>
+                        </div>
+                        
+                        <div class="wizard-step" data-step="3" style="display: none;">
+                            <h4>Langkah 3: Apakah Anda menggunakan Patch Cord yang benar (misalnya, BNC untuk video, RJ45 untuk data)?</h4>
+                            <button class="tombol wizard-tombol-ya" onclick="showWizardSolution('mdf', 'solusi-kabel')">Tidak (Salah Tipe Kabel)</button>
+                            <button class="tombol wizard-tombol-tidak" onclick="showWizardSolution('mdf', 'solusi-final')">Ya (Tipe Kabel Benar)</button>
+                        </div>
+
+                        <div class="wizard-solusi" data-solusi="solusi-longgar" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Koneksi Longgar</h4>
+                            <p>Dorong atau kunci kembali konektor Patch Cord hingga terasa pas. Putar konektor BNC searah jarum jam hingga terkunci.</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('mdf')">Mulai Wizard Kembali</button>
+                        </div>
+                        
+                        <div class="wizard-solusi" data-solusi="solusi-sumber" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Periksa Sinyal Sumber</h4>
+                            <p>Sinyal hilang sebelum MDF. Cek alat sumber (misalnya, kamera, VTR) apakah sudah menyala dan mengeluarkan sinyal normal.</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('mdf')">Mulai Wizard Kembali</button>
+                        </div>
+
+                        <div class="wizard-solusi" data-solusi="solusi-kabel" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Kabel Tidak Sesuai</h4>
+                            <p>Pastikan Anda menggunakan tipe kabel yang sesuai (misalnya, kabel SDI 75-Ohm untuk Video, bukan kabel 50-Ohm). Ganti Patch Cord Anda.</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('mdf')">Mulai Wizard Kembali</button>
+                        </div>
+                        
+                        <div class="wizard-solusi" data-solusi="solusi-final" style="display: none;">
+                            <h4 class="solusi-title">Solusi: Kegagalan Port Patch Panel</h4>
+                            <p>Jika semua langkah di atas sudah diperiksa, kemungkinan port di Patch Panel rusak. **Coba gunakan port sebelahnya.** Jika berhasil, segera laporkan port yang rusak untuk perbaikan.</p>
+                            <button class="tombol tombol-reset" onclick="resetWizard('mdf')">Mulai Wizard Kembali</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h2 id="galeri">5. Galeri Foto & Diagram MDF</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/mdf-rack.jpg" alt="Rack MDF dengan Kabel Terpasang" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/mdf-patch-detail.jpg" alt="Detail Patch Panel dengan Label" onclick="bukaModal(this.src)">
+                </div>
+
+                <h2 id="dokumen">6. Dokumen Pendukung (PDF)</h2>
+                <p>Diagram koneksi permanen di ruang MDF.</p>
+                <a href="../aset/dokumen/diagram-mdf-permanent.pdf" target="_blank" class="tombol tombol-pdf">
+                    Buka Diagram Wiring Permanen MDF (PDF)
+                </a>
+
+                <h2 id="catatan">7. Catatan Pribadi Anda</h2>
+                <div class="notes-container">
+                    <label for="personalNotesMDF">Tulis catatan, trik, atau keanehan port di MDF.</label>
+                    <textarea id="personalNotesMDF" placeholder="Masukkan catatan Anda di sini..." onkeyup="saveNote('MDF', this.value)"></textarea>
+                </div>
+
+            </div> </div> </div> <div id="modalGambar" class="modal">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script src="../script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Memuat status favorit saat halaman dimuat
+            updateFavoriteButton('mdf-panel');
+            
+            // Memuat status checklist dan catatan
+            loadChecklistStatus('mdf'); 
+            loadNote('MDF');
+
+             // Memuat wizard di langkah pertama
+            resetWizard('mdf');
+        });
+    </script>
+</body>
+</html>

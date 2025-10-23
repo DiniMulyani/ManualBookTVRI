@@ -1,0 +1,1192 @@
+/* --- IMPOR FONT MODERN DARI GOOGLE --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- RESET & PENGATURAN GLOBAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #1e3a8a; /* Warna Biru Tua (seperti Logo TVRI) */
+    --color-secondary: #f59e0b; /* Warna Aksen */
+    --color-white: #ffffff;
+    --color-gray-light: #e5e7eb;
+    --color-gray-dark: #374151;
+    --color-text-body: #4b5563;
+    --border-radius-card: 8px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px; /* Penting! (Agar header sticky tidak menutupi judul) */
+}
+
+.sop-layout-container {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* 200px sidebar, 1fr sisa ruang */
+    gap: 2rem; /* Jarak antara menu dan konten */
+    margin-top: 1.5rem;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 120px; /* (Tinggi header + jarak) Sesuaikan jika perlu */
+    align-self: start; /* Pastikan menu menempel di atas */
+    background: #fdfdfd;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.sticky-nav h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #0056b3;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.sticky-nav a {
+    display: block;
+    text-decoration: none;
+    color: #343a40;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sticky-nav a:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+}
+
+@media (max-width: 900px) {
+    .sop-layout-container {
+        grid-template-columns: 1fr; /* Hanya 1 kolom */
+    }
+    .sticky-nav {
+        position: static; /* Hapus sticky */
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+    html {
+        scroll-padding-top: 80px; /* Sesuaikan lagi untuk HP */
+    }
+}
+
+@media print {
+    .sop-layout-container {
+        display: block; /* Hapus grid saat cetak */
+    }
+    .sticky-nav {
+        display: none !important;
+    }
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f8f9fa; /* Abu-abu sangat muda */
+    color: #343a40; /* Teks gelap */
+    line-height: 1.6;
+    margin: 0; /* Hapus margin default agar sidebar menempel */
+    padding: 0; 
+    /* Tambahkan variabel warna dari Header lama untuk konsistensi */
+    --color-header-bg: #0d47a1; /* Biru tua yang kuat */
+    --sidebar-width: 300px; /* Tentukan lebar sidebar */
+}
+
+.full-height-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh; /* Tinggi penuh viewport */
+    position: fixed; /* Kunci sidebar di tempatnya */
+    top: 0;
+    left: 0;
+    background-color: var(--color-header-bg); /* Mengambil warna header lama */
+    color: var(--color-white);
+    padding: 20px;
+    box-sizing: border-box; /* Padding dihitung di dalam lebar */
+    overflow-y: auto; /* Memungkinkan sidebar digulir jika isinya terlalu panjang */
+    z-index: 1000; /* Pastikan di atas konten lain */
+}
+
+.full-height-sidebar .logo {
+    width: 60px;
+    height: auto;
+    filter: brightness(2); /* Membuat logo lebih terang di latar belakang gelap */
+}
+
+.full-height-sidebar h2 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 10px 0 0;
+}
+
+.full-height-sidebar p {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.sidebar-divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+}
+
+.sidebar-font-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.sidebar-font-controls .font-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.main-content-area {
+    /* Mendorong konten ke kanan agar tidak tertutup sidebar */
+    margin-left: var(--sidebar-width); 
+    padding: 20px;
+    background-color: #f4f7f9; /* Beri warna latar belakang yang berbeda */
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #212529;
+}
+
+/* --- HEADER BARU YANG STICKY --- */
+header {
+    background-color: #0056b3; /* Biru TVRI yang lebih modern */
+    color: white;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+header .logo {
+    width: 60px;
+    margin-bottom: 0.5rem;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: white;
+    font-weight: 700;
+}
+header p {
+    font-size: 1rem;
+    color: #e9ecef;
+}
+
+/* --- KONTAINER UTAMA --- */
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.sidebar-search-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--color-gray-dark);
+}
+
+/* Navigasi Kategori di Sidebar */
+.sidebar-category-nav h4 {
+    color: var(--color-secondary);
+    margin-top: 0;
+}
+.sidebar-category-nav ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar-category-nav li a {
+    display: block;
+    padding: 10px 5px;
+    color: var(--color-white);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s;
+}
+.sidebar-category-nav li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Sidebar */
+.sidebar-footer {
+    position: absolute; /* Menarik footer ke bawah */
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
+/* Media Query untuk Mobile */
+@media (max-width: 768px) {
+    .full-height-sidebar {
+        width: 100%; /* Sidebar mengambil penuh di mobile */
+        height: auto;
+        position: static; /* Non-aktifkan fixed position di mobile */
+    }
+    
+    .main-content-area {
+        margin-left: 0; /* Hapus margin kiri di mobile */
+    }
+}
+
+/* --- KOTAK PENCARIAN MODERN --- */
+.search-box {
+    margin-bottom: 2.5rem;
+}
+.search-box input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid #ced4da;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.search-box input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+}
+
+/* --- JUDUL DAFTAR ALAT --- */
+#daftarAlat h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #e9ecef;
+    padding-bottom: 0.5rem;
+}
+
+/* --- LAYOUT GRID UNTUK KARTU ALAT --- */
+.kartu-alat-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.kartu-alat {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #343a40;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kartu-alat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.kartu-alat h3 {
+    color: #0056b3;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+.kartu-alat p {
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+/* === [ HALAMAN DETAIL SOP ] === */
+
+/* --- TOMBOL-TOMBOL --- */
+.tombol {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.tombol-kembali {
+    background-color: #6c757d;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+.tombol-kembali:hover {
+    background-color: #5a6268;
+}
+
+.tombol-pdf {
+    background-color: #dc3545; /* Merah PDF */
+    color: white;
+    margin-top: 10px;
+}
+.tombol-pdf:hover {
+    background-color: #c82333;
+}
+
+/* --- KONTEN SOP --- */
+.content-sop {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.content-sop h2 {
+    font-size: 1.6rem;
+    color: #0056b3;
+    border-bottom: 3px solid #0056b3;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+.content-sop h2:first-of-type {
+    margin-top: 0;
+}
+
+.content-sop p, .content-sop li {
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+}
+
+.content-sop ol, .content-sop ul {
+    padding-left: 2rem;
+}
+
+/* --- WARNING BOX BARU --- */
+.warning {
+    background-color: #fff3cd; /* Kuning muda */
+    color: #664d03; /* Teks kuning tua */
+    border: 1px solid #ffde6b;
+    border-left: 5px solid #ffc107; /* Kuning aksen */
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+}
+.warning strong {
+    color: #664d03;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* --- VIDEO & PDF EMBED --- */
+.video-container, .pdf-embed-container {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.video-container video, 
+.pdf-embed-container iframe {
+    width: 100%;
+    height: 500px; /* Sesuaikan tinggi */
+    display: block;
+    border: none;
+}
+
+/* --- GALERI FOTO BARU --- */
+.galeri-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.galeri-container img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.galeri-container img:hover {
+    border-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* --- MODAL (LIGHTBOX) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 800px;
+    animation-name: zoom;
+    animation-duration: 0.4s;
+    border-radius: 8px;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.5)}
+    to {transform: scale(1)}
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+/* --- Style untuk Fitur Favorit --- */
+.favorit-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #e9ecef;
+}
+
+.favorit-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #0056b3;
+}
+
+.favorit-divider {
+    border: 0;
+    height: 1px;
+    background-color: #e9ecef;
+    margin-top: 2.5rem;
+}
+
+.tombol-favorit {
+    background-color: #17a2b8; /* Biru-info */
+    color: white;
+    margin-bottom: 1.5rem;
+    float: right; /* Posisikan di kanan, di bawah tombol 'kembali' */
+}
+.tombol-favorit:hover {
+    background-color: #138496;
+}
+
+/* Style untuk tombol saat aktif (sudah difavorit) */
+.tombol-favorit.aktif {
+    background-color: #ffc107; /* Kuning */
+    color: #212529;
+    border-color: #ffc107;
+}
+.tombol-favorit.aktif:hover {
+    background-color: #e0a800;
+}
+
+/* --- Style untuk Checklist Interaktif --- */
+.checklist-container {
+    background-color: #f8f9fa; /* Latar abu-abu muda */
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #e9ecef;
+}
+
+/* Sembunyikan checkbox asli */
+.checklist-item {
+    display: block;
+    position: relative;
+    padding-left: 35px; /* Ruang untuk checkbox kustom */
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.checklist-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Buat kotak checkbox kustom */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+/* Saat di-hover, ubah warna */
+.checklist-item:hover input ~ .checkmark {
+    background-color: #ced4da;
+}
+
+/* Saat dicentang, ubah jadi biru */
+.checklist-item input:checked ~ .checkmark {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Tanda centang (tersembunyi saat tidak dicentang) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Tampilkan tanda centang saat dicentang */
+.checklist-item input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Desain tanda centang (simbol 'L' terbalik) */
+.checklist-item .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Efek coret pada teks saat dicentang */
+.checklist-item input:checked ~ .checklist-text {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+/* Tombol Reset */
+.tombol-reset {
+    background-color: #dc3545; /* Merah */
+    color: white;
+    margin-top: 1.5rem;
+}
+.tombol-reset:hover {
+    background-color: #c82333;
+}
+
+/* --- Style untuk Catatan Pribadi (Textarea) --- */
+.notes-container {
+    margin-top: 1.5rem;
+}
+
+.notes-container label {
+    display: block;
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 0.75rem;
+}
+
+.notes-container textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    border: 1px solid #ced4da;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical; /* Izinkan user mengubah tinggi textarea */
+}
+
+.notes-container textarea:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+}
+
+/* --- Style untuk Wizard Troubleshooting --- */
+.wizard-container {
+    background-color: #fdfdfd;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.wizard-step h4 {
+    font-size: 1.4rem;
+    color: #343a40;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+.wizard-step p {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Atur tombol-tombol pilihan */
+.wizard-step .tombol {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    min-width: 180px;
+    text-align: left;
+}
+
+.wizard-tombol-ya {
+    background-color: #0056b3; /* Biru utama */
+    color: white;
+    border: 1px solid #0056b3;
+}
+.wizard-tombol-ya:hover {
+    background-color: #004494;
+}
+
+.wizard-tombol-tidak {
+    background-color: #6c757d; /* Abu-abu */
+    color: white;
+    border: 1px solid #6c757d;
+}
+.wizard-tombol-tidak:hover {
+    background-color: #5a6268;
+}
+
+/* Styling khusus untuk kotak SOLUSI */
+.wizard-solusi {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.wizard-solusi .solusi-title {
+    color: #28a745; /* Hijau untuk solusi */
+    font-size: 1.5rem;
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 10px;
+}
+
+.wizard-solusi ol {
+    margin-top: 1.5rem;
+    padding-left: 1.5rem;
+    font-size: 1.05rem;
+}
+.wizard-solusi ol li {
+    margin-bottom: 10px;
+}
+
+/* Tombol reset sudah ada, tapi kita pastikan posisinya */
+.wizard-solusi .tombol-reset {
+    margin-top: 1.5rem;
+    background-color: #6c757d;
+}
+.wizard-solusi .tombol-reset:hover {
+    background-color: #5a6268;
+}
+
+/* --- Style untuk Kontrol Ukuran Font --- */
+.font-controls {
+    position: absolute; /* Mengambang di dalam header */
+    top: 1.25rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1); /* Agak transparan */
+    border-radius: 8px;
+    padding: 5px;
+    display: flex;
+    gap: 5px; /* Jarak antar tombol */
+}
+
+.font-button {
+    background-color: #fff;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.font-button:hover {
+    background-color: #e9ecef;
+}
+
+header:has(h1:only-child) .font-controls {
+    top: 1rem;
+}
+
+/* --- KELAS UKURAN FONT (Diterapkan di <html>) --- */
+html {
+    font-size: 100%; 
+    transition: font-size 0.3s ease; /* Transisi halus */
+}
+
+html.font-size-small {
+    font-size: 90%;
+}
+
+html.font-size-large {
+    font-size: 110%;
+}
+
+html.font-size-xlarge {
+    font-size: 120%;
+}
+
+/* --- Style untuk Tombol Cetak --- */
+.tombol-cetak {
+    background-color: #007bff; /* Biru terang */
+    color: white;
+    margin-bottom: 1.5rem;
+    float: right;
+    margin-right: 10px; /* Jarak dari tombol favorit */
+}
+.tombol-cetak:hover {
+    background-color: #0069d9;
+}
+
+
+/* =================================================== */
+/* === STYLE UNTUK VERSI CETAK (PRINT-FRIENDLY) === */
+/* =Impor ini harus di paling atas================================== */
+
+@media print {
+
+    /* Sembunyikan semua elemen yang tidak perlu dicetak */
+    header, 
+    .tombol,
+    .tombol-kembali,
+    .tombol-favorit,
+    .tombol-cetak,
+    .tombol-pdf,
+    .tombol-reset,
+    .font-controls,
+    .search-box,
+    .favorit-container,
+    .wizard-container,
+    .notes-container,
+    .video-container,
+    .pdf-embed-container,
+    .galeri-container,
+    .modal {
+        display: none !important; /* Paksa sembunyi */
+    }
+    
+    /* Atur ulang layout halaman utama */
+    body {
+        font-family: 'Times New Roman', Times, serif; /* Font standar cetak */
+        background-color: #fff !important;
+        color: #000 !important;
+        font-size: 12pt; /* Ukuran font standar cetak */
+        line-height: 1.3;
+    }
+
+    .container, 
+    .content-sop {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    /* Tampilkan konten SOP dengan jelas */
+    .content-sop h1,
+    .content-sop h2,
+    .content-sop h3 {
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+        page-break-after: avoid; /* Jangan pisah judul dari konten di bawahnya */
+        margin-top: 1.5rem;
+    }
+    
+    /* Ubah tampilan checklist agar bisa dicetak */
+    .checklist-container {
+        border: 1px solid #ccc !important;
+        padding: 1rem !important;
+        background: #fafafa !important;
+    }
+    .checkmark {
+        height: 18px;
+        width: 18px;
+        border: 1px solid #000 !important;
+        background: #fff !important;
+    }
+    .checklist-item input:checked ~ .checkmark:after {
+        /* Sembunyikan tanda centang kustom agar bisa dicetak */
+        display: none !important; 
+    }
+    .checklist-item input {
+        /* Tampilkan kotak centang asli saat dicetak */
+        position: static; /* Kembalikan posisi */
+        opacity: 1 !important;
+        height: 18px;
+        width: 18px;
+    }
+    .checklist-text {
+        text-decoration: none !important; /* Hapus coretan */
+        color: #000 !important;
+    }
+
+    /* Atur peringatan */
+    .warning {
+        background-color: #eee !important;
+        border: 1px dashed #000 !important;
+        color: #000 !important;
+    }
+    .warning strong {
+        color: #000 !important;
+    }
+
+    /* Hindari halaman terpotong di tengah elemen */
+    ol, ul, img, .warning {
+        page-break-inside: avoid;
+    }
+    
+    /* Tampilkan URL dari link (opsional tapi berguna) */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #333;
+    }
+    /* Kecuali link internal halaman */
+    a[href^="#"]:after,
+    a.kartu-alat:after {
+        content: "";
+    }
+
+    .in-page-search-container {
+    display: flex; /* Membuat input dan tombol sejajar */
+    gap: 10px; /* Jarak antara input dan tombol */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa; /* Latar abu-abu muda */
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.in-page-search-container input {
+    width: 100%; /* Memenuhi sisa ruang */
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.in-page-search-container input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+}
+
+.tombol-reset-search {
+    flex-shrink: 0; /* Mencegah tombol mengecil */
+    padding: 0.75rem 1rem;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.tombol-reset-search:hover {
+    background-color: #5a6268;
+}
+
+/* Style untuk teks yang disorot (highlight) */
+mark {
+    background-color: #ffc107; /* Warna kuning stabilo */
+    color: #212529; /* Teks gelap agar terbaca */
+    padding: 2px 4px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(255,193,7,0.5);
+}
+}
+
+.warning-umum {
+    background-color: #fff3cd;
+    color: #664d03;
+    border: 1px solid #ffde6b;
+    border-left: 5px solid #ffc107;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+}
+.warning-umum strong {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+.warning-umum ul {
+    padding-left: 1.5rem;
+    margin: 0;
+}
+.warning-umum li {
+    margin-bottom: 0.5rem;
+}
+
+.main-footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+        border-top: 1px solid #e9ecef;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+.main-content-wrapper {
+    display: flex;
+    gap: 30px; 
+    padding-top: 20px;
+    align-items: flex-start;
+}
+
+.sidebar-header-section {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+/* 1. Pengaturan Sidebar */
+.sidebar-nav {
+    flex-shrink: 0; 
+    width: 250px; 
+    padding: 20px 15px;
+    
+    /* GAYA UTAMA UNTUK MENONJOLKAN SIDEBAR */
+    background-color: var(--color-white); 
+    border-radius: var(--border-radius-card); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    border-left: 5px solid var(--color-secondary); /* Garis aksen di samping kiri */
+    
+    /* Properti Sticky (untuk tetap di tempat saat di-scroll) */
+    position: sticky; 
+    top: 20px; 
+}
+
+.sidebar-nav h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 15px; /* Tambah margin bawah */
+    padding-bottom: 5px; /* Tambah padding bawah */
+    border-bottom: 2px solid var(--color-gray-light); /* Garis pemisah bawah */
+    font-size: 1.2em; /* Ukuran font lebih besar */
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 10px 0; /* Padding lebih besar */
+    color: var(--color-gray-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-bottom: 1px dashed var(--color-gray-light); /* Garis putus-putus sebagai pemisah */
+}
+
+.sidebar-nav li:last-child a {
+    border-bottom: none; /* Hilangkan pemisah di item terakhir */
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:focus {
+    color: var(--color-secondary);
+    background-color: #fcfcfc; /* Latar belakang sedikit berubah saat hover */
+    padding-left: 5px; /* Efek geser kecil */
+    font-weight: 600;
+}
+
+/* 2. Pengaturan Area Daftar Alat */
+.alat-list-area {
+    flex-grow: 1; 
+    min-width: 0; 
+}
+
+/* 3. Media Query untuk Layar Kecil (Mobile) */
+@media (max-width: 900px) {
+    .main-content-wrapper {
+        flex-direction: column; 
+    }
+
+    .sidebar-nav {
+        /* Non-aktifkan sticky di perangkat kecil agar menu tidak menghalangi konten */
+        position: static; 
+        width: 100%; 
+        /* ... (CSS horizontal/gulir untuk mobile lainnya) ... */
+    }
+    
+    .sidebar-nav ul {
+        display: flex; /* Tampilkan kategori secara horizontal di mobile */
+        overflow-x: auto; /* Bisa digulir horizontal */
+        padding: 10px 0;
+        border-top: 1px solid var(--color-gray-light);
+        border-bottom: 1px solid var(--color-gray-light);
+    }
+    
+    .sidebar-nav li {
+        flex-shrink: 0;
+        margin-right: 15px;
+    }
+
+    .sidebar-nav li a {
+        padding: 5px 10px;
+        white-space: nowrap; /* Mencegah kategori patah baris */
+        border-bottom: none;
+        background-color: var(--color-gray-lighter);
+        border-radius: 5px;
+        font-size: 0.9em;
+    }
+}
+
+
+/* --- PASTIKAN JUGA MEMPERBARUI CARD CONTAINER JIKA PERLU --- */
+
+/* Ini mungkin perlu disesuaikan karena sekarang berada di dalam .alat-list-area */
+.kartu-alat-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px; /* Memberi ruang di bawah setiap kategori */
+}
+
+/* Aturan untuk heading kategori agar memiliki margin yang baik */
+.kategori-heading {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.signal-flow-section {
+    margin-bottom: 2.5rem;
+}
+
+.signal-flow-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    color: #212529;
+}
+
+.flow-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dua kolom */
+    gap: 1.5rem;
+}
+
+.flow-card {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.flow-card h4 {
+    color: #0056b3;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.flow-card p {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.flow-diagram {
+    display: flex;
+    flex-wrap: wrap; /* Agar rapi di layar kecil */
+    align-items: center;
+    gap: 10px;
+}
+
+.flow-step {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #343a40;
+    flex-shrink: 0; /* Mencegah teks terpotong */
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6c757d;
+}
+
+/* Buat alur sinyal jadi 1 kolom di HP */
+@media (max-width: 900px) {
+    .flow-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sembunyikan alur sinyal saat dicetak */
+@media print {
+    .signal-flow-section {
+        display: none !important;
+    }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP Konfigurasi Encoder</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <script>
+        (function() {
+            const FONT_SIZE_KEY = 'manualBookFontSize';
+            const DEFAULT_FONT_SIZE = 'medium';
+            const savedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
+            
+            if (savedSize !== DEFAULT_FONT_SIZE) {
+                document.documentElement.classList.add(`font-size-${savedSize}`);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>SOP Konfigurasi Encoder</h1>
+        
+        <div class="font-controls">
+            <button id="font-decrease" class="font-button" onclick="changeFontSize('decrease')">A-</button>
+            <button id="font-reset" class="font-button" onclick="changeFontSize('reset')">A</button>
+            <button id="font-increase" class="font-button" onclick="changeFontSize('increase')">A+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali ke Daftar Alat</a>
+        
+        <button id="tombolFavorit" class="tombol tombol-favorit" 
+                onclick="toggleFavorite('encoder-konfigurasi', 'Encoder (Input & Output)', 'Tutorial konfigurasi input SDI dan output IP/ASI.')">
+            Tambahkan ke Favorit ⭐
+        </button>
+
+        <button class="tombol tombol-cetak" onclick="window.print()">
+            🖨️ Cetak SOP
+        </button>
+
+        <div class="sop-layout-container">
+
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#k3">1. Peringatan K3</a>
+                <a href="#prosedur-input">2. Prosedur Input Encoder</a>
+                <a href="#prosedur-output">3. Prosedur Output Encoder (WebGUI)</a>
+                <a href="#checklist">3A. Checklist Konfigurasi</a>
+                <a href="#wizard">4. Troubleshooting</a>
+                <a href="#galeri">5. Galeri Foto</a>
+                <a href="#catatan">6. Catatan Pribadi</a>
+            </nav>
+
+            <div class="content-sop" id="content-sop">
+                <h2 id="k3">1. Peringatan Keselamatan Kerja (K3)</h2>
+                <div class="warning">
+                    <strong>PERHATIAN!</strong>
+                    <ul>
+                        <li>Pastikan koneksi kabel SDI dan LAN terpasang kencang sebelum menyalakan alat.</li>
+                        <li>Jangan mengkonfigurasi IP Address yang sama dengan alat lain (IP Conflict) karena akan mengganggu jaringan.</li>
+                        <li>Pastikan sumber sinyal (MCR/Kamera) sudah menyala sebelum mengkonfigurasi input.</li>
+                    </ul>
+                </div>
+
+                <h2 id="prosedur-input">2. Prosedur Input Encoder</h2>
+                <ol>
+                    <li>Menghidupkan Perangkat Encoder.</li>
+                    <li>Sediakan input SDI (dari MCR/Studio) dan juga kabel SDI.</li>
+                    <li>Hubungkan kabel SDI ke Port Input SDI 1 yang berada dibelakang encoder.</li>
+                    <li>Jika sudah dihubungkan, encoder akan menampilkan gambar pada display monitor (jika ada) dan juga pada tampilan awal WebGui.</li>
+                </ol>
+                
+                <h2 id="prosedur-output">3. Prosedur Output Encoder (WebGUI)</h2>
+                <ol>
+                    <li>Hubungkan kabel LAN pada Port management (MGT) dibagian belakang encoder ke Laptop/PC.</li>
+                    <li>Pada tampilan depan Encoder, Cari menu <strong>System -> Network –> MGT -> IP</strong> (akan menampilkan IP management untuk diakses melalui Laptop/PC).</li>
+                    <li>Buka Browser pada Laptop/PC, lalu masukan IP management tersebut (misal: 192.168.1.10).</li>
+                    <li>Tampilan awal WebGui akan berada di menu Status. Cari dan klik 'Start' untuk menyalakan status output encoder.</li>
+                    <li>Pilih <strong>System –> Network</strong>. Lalu ubah <strong>Stream 1</strong> & <strong>Stream 2</strong>. Buatlah Status dan Address IP agar Port Stream 1 dan Stream 2 dapat digunakan.</li>
+                    <li>Pilih <strong>Channel 1 –> Global Settings</strong>. Buat nama, Quality dan Output Bitrate. Lalu Klik 'More', dan cari menu 'SI Tables' dan isi Network ID, Network Name, Service Type, Service Name, dan Service Provider.</li>
+                    <li>Pilih <strong>Output Setting –> ASI</strong> (klik pada kolom kotak untuk Enable).</li>
+                    <li>Pilih <strong>Output Setting –> IP 1</strong> (klik pada kolom kotak untuk Enable). Pada bagian 'Main' klik dan Pilih (Stream 1 / Stream 2) – buat IP multicast dan Port service.</li>
+                    <li>Pilih <strong>Video Settings</strong> (klik pada kolom kotak untuk Enable). Pilih menu Codec dan Input untuk configurasi kualitas video.</li>
+                    <li>Pilih <strong>Audio Settings –> Audio 1</strong> (klik pada kolom kotak untuk Enable). Pilih menu Codec, mode, bitrate dan Input untuk configurasi kualitas audio.</li>
+                </ol>
+
+                <h2 id="checklist">3A. Checklist Konfigurasi (Interaktif)</h2>
+                <div id="interactiveChecklist" class="checklist-container">
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-1" onchange="saveChecklistStatus('encoder-konfigurasi')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Kabel SDI terpasang di Port Input 1?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-2" onchange="saveChecklistStatus('encoder-konfigurasi')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Kabel LAN terpasang di Port Management (MGT)?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-3" onchange="saveChecklistStatus('encoder-konfigurasi')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">IP Management sudah diakses via browser?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-4" onchange="saveChecklistStatus('encoder-konfigurasi')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">IP Multicast (Stream 1) sudah diatur?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-5" onchange="saveChecklistStatus('encoder-konfigurasi')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Status Output di menu 'Status' sudah di-klik 'Start'?</span>
+                    </label>
+                    <button class="tombol tombol-reset" 
+                            onclick="resetChecklist('encoder-konfigurasi', 'interactiveChecklist')">
+                        Reset Checklist
+                    </button>
+                </div>
+                
+                <h2 id="wizard">4. Troubleshooting</h2>
+                <div id="troubleshootingWizard" class="wizard-container">
+                    <div id="step-start" class="wizard-step" style="display: block;">
+                        <h4>Apa masalah Anda?</h4>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-q-no-gui')">Tidak bisa akses WebGui (IP Management)</button>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-q-no-pic')">Tidak ada gambar di WebGui (Input Hitam)</button>
+                    </div>
+
+                    <div id="step-q-no-gui" class="wizard-step" style="display: none;">
+                        <h4>Apakah IP Laptop/PC Anda sudah satu segmen dengan IP MGT Encoder?</h4>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-solusi-ip-laptop')">Belum, IP Laptop beda</button>
+                        <button class="tombol wizard-tombol-tidak" onclick="goToStep('step-solusi-kabel-lan')">Ya, sudah satu segmen</button>
+                    </div>
+
+                    <div id="step-q-no-pic" class="wizard-step" style="display: none;">
+                        <h4>Apakah sumber SDI (dari MCR) sudah menyala?</h4>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-solusi-sumber-sdi')">Ya, sumber SDI sudah menyala</button>
+                        <button class="tombol wizard-tombol-tidak" onclick="goToStep('step-solusi-sumber-mati')">Belum, sumbernya mati</button>
+                    </div>
+
+                    <div id="step-solusi-ip-laptop" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Samakan Segmen IP</h4>
+                        <p>Atur IP Address di Laptop/PC Anda agar satu segmen. Contoh: Jika IP MGT Encoder 192.168.1.10, atur IP Laptop Anda menjadi 192.168.1.11.</p>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+                    <div id="step-solusi-sumber-sdi" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Cek Kabel SDI</h4>
+                        <p>Sumber sudah menyala namun gambar tetap hitam. Coba ganti kabel SDI. Pastikan juga kabel terpasang di Port Input SDI 1 (sesuai langkah prosedur).</p>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+                </div>
+
+                <h2 id="galeri">5. Galeri Foto</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/placeholder.png" alt="Contoh Bagian Belakang Encoder" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/placeholder.png" alt="Contoh Tampilan WebGui" onclick="bukaModal(this.src)">
+                </div>
+
+                <h2 id="catatan">6. Catatan Pribadi Anda</h2>
+                <div class="notes-container">
+                    <label for="personalNotes">Catatan ini HANYA tersimpan di browser Anda.</label>
+                    <textarea id="personalNotes" 
+                              placeholder="Contoh: IP MGT = 192.168.1.10, IP Stream 1 = 239.0.0.1:5000..."
+                              onkeyup="saveNotes('encoder-konfigurasi')">
+                    </textarea>
+                </div>
+
+            </div> </div> </div> <div id="modalGambar" class="modal">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkFavoriteStatus('encoder-konfigurasi');
+            loadChecklistStatus('encoder-konfigurasi', 'interactiveChecklist');
+            loadNotes('encoder-konfigurasi');
+        });
+    </script> 
+</body>
+</html>

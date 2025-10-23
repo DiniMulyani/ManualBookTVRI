@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP Network Switch (Multiviewer)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <script>
+        (function() {
+            const FONT_SIZE_KEY = 'manualBookFontSize';
+            const DEFAULT_FONT_SIZE = 'medium';
+            const savedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
+            
+            if (savedSize !== DEFAULT_FONT_SIZE) {
+                document.documentElement.classList.add(`font-size-${savedSize}`);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>SOP Network Switch (HPE 1420)</h1>
+        
+        <div class="font-controls">
+            <button id="font-decrease" class="font-button" onclick="changeFontSize('decrease')">A-</button>
+            <button id="font-reset" class="font-button" onclick="changeFontSize('reset')">A</button>
+            <button id="font-increase" class="font-button" onclick="changeFontSize('increase')">A+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali ke Daftar Alat</a>
+        
+        <button id="tombolFavorit" class="tombol tombol-favorit" 
+                onclick="toggleFavorite('switch-hpe-1420', 'Network Switch (Multiviewer)', 'Panduan operasional switch HPE 1420.')">
+            Tambahkan ke Favorit ⭐
+        </button>
+
+        <button class="tombol tombol-cetak" onclick="window.print()">
+            🖨️ Cetak SOP
+        </button>
+
+        <div class="sop-layout-container">
+
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#k3">1. Peringatan K3</a>
+                <a href="#prosedur">2. Prosedur Instalasi & Operasi</a>
+                <a href="#led">3. Memahami Indikator LED</a>
+                <a href="#checklist">4. Checklist Pra-Operasi</a>
+                <a href="#wizard">5. Troubleshooting</a>
+                <a href="#galeri">6. Galeri Foto</a>
+                <a href="#dokumen">7. Dokumen Pendukung (PDF) </a>
+                <a href="#catatan">8. Catatan Pribadi</a>
+            </nav>
+
+            <div class="content-sop" id="content-sop">
+                <h2 id="k3">1. Peringatan Keselamatan Kerja (K3)</h2>
+                <div class="warning">
+                    <strong>PERHATIAN! VENTILASI DAN LISTRIK</strong>
+                    <p>HPE 1420 adalah switch *unmanaged*. Alat ini tidak memiliki tombol ON/OFF eksternal dan akan langsung menyala saat terhubung ke listrik.</p>
+                    <ul>
+                        <li>Pastikan ventilasi di sisi kiri dan kanan alat tidak terhalang. Sirkulasi udara sangat penting.</li>
+                        <li>Pastikan kabel power terpasang kencang ke stopkontak (AC) dan ke unit switch.</li>
+                        <li>Gunakan kabel LAN (RJ45) yang berkualitas baik (Cat 5e/Cat 6) dan ter-crimping sempurna.</li>
+                    </ul>
+                </div>
+
+                <h2 id="prosedur">2. Prosedur Instalasi & Operasi</h2>
+                <p>HPE 1420 adalah *Unmanaged Switch*. Tidak ada konfigurasi software/WebGui. Pengoperasiannya bersifat *plug-and-play*.</p>
+                <ol>
+                    <li>Pasang (Mount) unit switch pada rak (rack server) dan pastikan terpasang kencang.</li>
+                    <li>Hubungkan kabel power AC ke unit switch dan ke sumber listrik (PDU/UPS).</li>
+                    <li>Alat akan otomatis menyala. Amati LED 'Power' di panel depan menyala hijau solid.</li>
+                    <li>Hubungkan kabel LAN (RJ45) dari perangkat sumber (misal: Encoder 1, Encoder 2, ...) ke port mana saja di switch.</li>
+                    <li>Hubungkan kabel LAN (RJ45) dari port lain di switch ke unit prosesor Multiviewer.</li>
+                    <li>Operasi selesai. Switch akan secara otomatis mengarahkan lalu lintas data (video IP) antar perangkat.</li>
+                </ol>
+                
+                <h2 id="led">3. Memahami Indikator LED</h2>
+                <p>Mengamati LED adalah satu-satunya cara untuk memonitor switch *unmanaged* ini.</p>
+                <ul>
+                    <li><strong>LED Power (Paling Kiri):</strong>
+                        <ul>
+                            <li><strong>Hijau Solid:</strong> Alat menyala dan beroperasi normal.</li>
+                            <li><strong>Mati:</strong> Alat mati (tidak ada power).</li>
+                        </ul>
+                    </li>
+                    <li><strong>LED Link/Activity (Per Port):</strong>
+                        <ul>
+                            <li><strong>Hijau Solid:</strong> Ada koneksi (link) 1000 Mbps (Gigabit) ke perangkat lain, tapi tidak ada data.</li>
+                            <li><strong>Hijau Berkedip:</strong> Ada koneksi Gigabit dan sedang ada aktivitas data (normal).</li>
+                            <li><strong>Kuning Solid:</strong> Ada koneksi 10/100 Mbps (lebih lambat).</li>
+                            <li><strong>Kuning Berkedip:</strong> Ada koneksi 10/100 Mbps dan ada aktivitas data.</li>
+                            <li><strong>Mati:</strong> Tidak ada kabel terhubung, kabel putus, atau perangkat di ujung mati.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h2 id="checklist">4. Checklist Pra-Operasi (Interaktif)</h2>
+                <div id="interactiveChecklist" class="checklist-container">
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-1" onchange="saveChecklistStatus('switch-hpe-1420')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Switch terpasang aman di rak?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-2" onchange="saveChecklistStatus('switch-hpe-1420')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Kabel power terpasang kencang?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-3" onchange="saveChecklistStatus('switch-hpe-1420')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">LED Power di panel depan menyala Hijau Solid?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-4" onchange="saveChecklistStatus('switch-hpe-1420')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">LED Link di port yang terhubung ke Encoder menyala (Hijau/Kuning)?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-5" onchange="saveChecklistStatus('switch-hpe-1420')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">LED Link di port yang terhubung ke Multiviewer menyala (Hijau/Kuning)?</span>
+                    </label>
+                    <button class="tombol tombol-reset" 
+                            onclick="resetChecklist('switch-hpe-1420', 'interactiveChecklist')">
+                        Reset Checklist
+                    </button>
+                </div>
+                
+                <h2 id="wizard">5. Troubleshooting</h2>
+                <div id="troubleshootingWizard" class="wizard-container">
+                    <div id="step-start" class="wizard-step" style="display: block;">
+                        <h4>Apa masalah Anda?</h4>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-q-no-link')">Satu gambar di Multiviewer hilang (hitam)</button>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-q-no-power')">Switch mati total (LED Power Off)</button>
+                    </div>
+
+                    <div id="step-q-no-link" class="wizard-step" style="display: none;">
+                        <h4>Periksa port di switch yang terhubung ke Encoder sumber itu. Apakah LED Link-nya menyala?</h4>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-solusi-link-on')">Ya, LED Link menyala (Solid atau Berkedip)</button>
+                        <button class="tombol wizard-tombol-tidak" onclick="goToStep('step-solusi-link-off')">Tidak, LED Link mati</button>
+                    </div>
+
+                    <div id="step-q-no-power" class.wizard-step" style="display: none;">
+                        <h4>Sudah periksa kabel power dan stopkontak (MCB)?</h4>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-solusi-power-bad')">Ya, kabel dan MCB aman, tapi switch tetap mati</button>
+                        <button class="tombol wizard-tombol-tidak" onclick="goToStep('step-solusi-power-mcb')">Belum, akan saya periksa</button>
+                    </div>
+
+                    <div id="step-solusi-link-on" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Jaringan OK, Cek Perangkat Lain</h4>
+                        <p>Jika LED Link menyala, itu artinya koneksi jaringan dari switch ke Encoder berjalan normal. Masalah **BUKAN** di switch. Kemungkinan masalah ada di:</p>
+                        <ol><li>Perangkat Encoder-nya (mungkin 'hang' atau tidak mengirim sinyal).</li><li>Unit Prosesor Multiviewer-nya.</li></ol>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+                    <div id="step-solusi-link-off" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Tidak Ada Koneksi Fisik</h4>
+                        <p>Jika LED Link mati, tidak ada koneksi listrik/fisik. Lakukan ini:</p>
+                        <ol><li>Coba ganti kabel LAN (RJ45) dengan yang baru.</li><li>Pastikan perangkat Encoder di ujung kabel menyala.</li><li>Coba pindahkan kabel LAN ke port lain di switch yang Anda tahu berfungsi.</li></ol>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+                    <div id="step-solusi-power-bad" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Kerusakan Internal</h4>
+                        <p>Jika MCB dan kabel power 100% baik tapi LED Power tetap mati, kemungkinan besar unit Power Supply internal switch rusak. Alat perlu diservis atau diganti.</p>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+
+                </div>
+
+                <h2 id="galeri">6. Galeri Foto</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/hpe-1420-depan.jpg" alt="Tampak Depan Switch HPE 1420" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/hpe-1420-belakang.jpg" alt="Panel Belakang (Port Power)" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/hpe-1420-led.jpg" alt="Indikator LED" onclick="bukaModal(this.src)">
+                </div>
+
+                <h2 id="dokumen">7. Dokumen Pendukung (PDF)</h2>
+                <p>Klik tombol di bawah untuk melihat manual asli dari pabrikan.</p>
+                <a href="../aset/dokumen/manual-switch-hpe.pdf" target="_blank" class="tombol tombol-pdf">
+                    Buka Manual Asli Network Switch HPE-1420 (PDF)
+                </a>
+
+                <h2 id="catatan">8. Catatan Pribadi Anda</h2>
+                <div class="notes-container">
+                    <label for="personalNotes">Catatan ini HANYA tersimpan di browser Anda.</label>
+                    <textarea id="personalNotes" 
+                              placeholder="Contoh: Port 1-8 (Input Encoder Studio 1). Port 9-16 (Input Studio 2). Port 23 (Uplink ke MCR). Port 24 (Output ke Multiviewer Processor)."
+                              onkeyup="saveNotes('switch-hpe-1420')">
+                    </textarea>
+                </div>
+
+            </div> </div> </div> <div id="modalGambar" class="modal">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkFavoriteStatus('switch-hpe-1420');
+            loadChecklistStatus('switch-hpe-1420', 'interactiveChecklist');
+            loadNotes('switch-hpe-1420');
+        });
+    </script> 
+</body>
+</html>

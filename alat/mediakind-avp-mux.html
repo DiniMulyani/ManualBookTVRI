@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP MUX MediaKind AVP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <script>
+        (function() {
+            const FONT_SIZE_KEY = 'manualBookFontSize';
+            const DEFAULT_FONT_SIZE = 'medium';
+            const savedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
+            
+            if (savedSize !== DEFAULT_FONT_SIZE) {
+                document.documentElement.classList.add(`font-size-${savedSize}`);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>SOP Multiplexer MediaKind (AVP Series)</h1>
+        
+        <div class="font-controls">
+            <button id="font-decrease" class="font-button" onclick="changeFontSize('decrease')">A-</button>
+            <button id="font-reset" class="font-button" onclick="changeFontSize('reset')">A</button>
+            <button id="font-increase" class="font-button" onclick="changeFontSize('increase')">A+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali ke Daftar Alat</a>
+        
+        <button id="tombolFavorit" class="tombol tombol-favorit" 
+                onclick="toggleFavorite('mediakind-mux', 'MUX MediaKind AVP', 'Panduan konfigurasi multiplexer MediaKind (Ericsson).')">
+            Tambahkan ke Favorit ⭐
+        </button>
+
+        <button class="tombol tombol-cetak" onclick="window.print()">
+            🖨️ Cetak SOP
+        </button>
+
+        <div class="sop-layout-container">
+
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#k3">1. Peringatan K3</a>
+                <a href="#prosedur-koneksi">2. Prosedur Koneksi Awal</a>
+                <a href="#prosedur-webgui">3. Prosedur Konfigurasi (WebGUI)</a>
+                <a href="#checklist">4. Checklist Konfigurasi</a>
+                <a href="#wizard">5. Troubleshooting</a>
+                <a href="#galeri">6. Galeri Foto</a>
+                <a href="#catatan">7. Catatan Pribadi</a>
+            </nav>
+
+            <div class="content-sop" id="content-sop">
+                <h2 id="k3">1. Peringatan Keselamatan Kerja (K3)</h2>
+                <div class="warning">
+                    <strong>PERHATIAN! KONFIGURASI KRITIS & MODULAR</strong>
+                    <ul>
+                        <li>Platform AVP sering bersifat modular. Pastikan Anda mengkonfigurasi modul/slot yang benar.</li>
+                        <li>Kesalahan konfigurasi (PID conflict, bitrate) bisa menyebabkan siaran mati total.</li>
+                        <li>Selalu simpan ('Save'/'Commit') konfigurasi setelah melakukan perubahan.</li>
+                    </ul>
+                </div>
+
+                <h2 id="prosedur-koneksi">2. Prosedur Koneksi Awal</h2>
+                <ol>
+                    <li>Hubungkan kabel input stream (ASI atau IP) dari Encoder ke port input pada modul MUX di chassis AVP.</li>
+                    <li>Hubungkan kabel output (ASI atau IP) dari port output modul MUX ke Pemancar.</li>
+                    <li>Hubungkan kabel LAN (RJ45) dari port 'Management' chassis AVP ke Jaringan LAN/Laptop.</li>
+                    <li>Nyalakan chassis AVP. Tunggu hingga semua modul selesai booting.</li>
+                </ol>
+                
+                <h2 id="prosedur-webgui">3. Prosedur Konfigurasi (WebGUI)</h2>
+                <p>IP Address chassis AVP harus diketahui (Contoh: `192.168.1.11`).</p>
+                <ol>
+                    <li>Atur IP Address Laptop/PC Anda ke segmen yang sama.</li>
+                    <li>Buka Browser dan ketik IP Address Chassis (misal: `http://192.168.1.11`).</li>
+                    <li>Masuk menggunakan username dan password.</li>
+                    <li><strong>Pilih Modul MUX:</strong>
+                        <ul>
+                            <li>Navigasi ke slot tempat modul MUX terpasang.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Konfigurasi Input Stream:</strong>
+                        <ul>
+                            <li>Cari menu `Input Configuration` atau `Stream Input`.</li>
+                            <li>Pilih port input (misal: ASI 1) dan aktifkan. Pastikan status 'Link Up' atau 'Signal OK'.</li>
+                            <li>Ulangi untuk input lain jika ada (misal: ASI 2).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Membuat Output Transport Stream:</strong>
+                        <ul>
+                            <li>Cari menu `Multiplexing` atau `Output TS Configuration`.</li>
+                            <li>Buat TS output baru. Atur TS ID dan Network ID.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Mapping Services (Program):</strong>
+                        <ul>
+                            <li>Pilih TS output yang baru dibuat. Masuk ke 'Service Mapping' atau 'PID Filtering/Remapping'.</li>
+                            <li>Pilih 'Input Port' (misal: ASI 1).</li>
+                            <li>Pilih Service Name atau Program Number yang ingin dimasukkan.</li>
+                            <li>Atur PID Output (Video, Audio, PMT) jika perlu di-remap.</li>
+                            <li>Ulangi untuk Service dari input lain (misal: ASI 2).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Konfigurasi PSI/SI Tables:</strong>
+                        <ul>
+                            <li>Masuk ke menu `PSI/SI Generation`.</li>
+                            <li>Aktifkan pembuatan PAT, PMT, SDT, NIT. Atur parameter (Nama Service, Provider, Network Name) dan interval.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Konfigurasi Output Fisik:</strong>
+                        <ul>
+                            <li>Masuk ke menu `Output Configuration`.</li>
+                            <li>Pilih port fisik output (misal: ASI Out 1).</li>
+                            <li>Pilih 'Source' = TS output yang tadi dibuat.</li>
+                            <li>Atur 'Output Mode' (misal: CBR) dan 'Bitrate'.</li>
+                        </ul>
+                    </li>
+                    <li>Klik **'Save Configuration'** atau **'Commit Changes'**.</li>
+                </ol>
+
+                <h2 id="checklist">4. Checklist Konfigurasi (Interaktif)</h2>
+                <div id="interactiveChecklist" class="checklist-container">
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-1" onchange="saveChecklistStatus('mediakind-mux')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Kabel Input & Output terpasang di modul MUX?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-2" onchange="saveChecklistStatus('mediakind-mux')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Berhasil login ke WebGUI Chassis?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-3" onchange="saveChecklistStatus('mediakind-mux')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Status Input Stream OK?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-4" onchange="saveChecklistStatus('mediakind-mux')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Service yang benar sudah di-mapping ke TS Output?</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox" name="chk-5" onchange="saveChecklistStatus('mediakind-mux')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">PSI/SI Tables sudah dikonfigurasi dan aktif?</span>
+                    </label>
+                     <label class="checklist-item">
+                        <input type="checkbox" name="chk-6" onchange="saveChecklistStatus('mediakind-mux')">
+                        <span class="checkmark"></span>
+                        <span class="checklist-text">Output fisik sudah diatur dan menunjuk ke TS Output yang benar?</span>
+                    </label>
+                    <button class="tombol tombol-reset" 
+                            onclick="resetChecklist('mediakind-mux', 'interactiveChecklist')">
+                        Reset Checklist
+                    </button>
+                </div>
+                
+                <h2 id="wizard">5. Troubleshooting</h2>
+                 <div id="troubleshootingWizard" class="wizard-container">
+                    <div id="step-start" class="wizard-step" style="display: block;">
+                        <h4>Apa masalah Anda?</h4>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-q-no-output')">Tidak ada sinyal sama sekali di output ASI/IP</button>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-q-missing-svc')">Output ada, tapi salah satu service (program) hilang</button>
+                        <button class="tombol wizard-tombol-ya" onclick="goToStep('step-q-table-error')">Decoder menampilkan error 'PAT/PMT Error'</button>
+                    </div>
+                    <div id="step-solusi-no-output" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Cek Output Config & Bitrate</h4>
+                        <p>Pastikan `Output Configuration` sudah benar memilih 'Source' TS Output. Cek juga apakah total bitrate service melebihi batas 'Bitrate' output yang diatur.</p>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+                     <div id="step-solusi-missing-svc" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Cek Input & Service Mapping</h4>
+                        <p>Pastikan Input Stream sumber service tersebut statusnya OK. Lalu cek di `Service Mapping` atau `PID Filtering`, pastikan service tersebut sudah ditambahkan dan PID-nya ter-mapping dengan benar.</p>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+                     <div id="step-solusi-table-error" class="wizard-step wizard-solusi" style="display: none;">
+                        <h4 class="solusi-title">Solusi: Cek Konfigurasi PSI/SI</h4>
+                        <p>Masuk ke `PSI/SI Generation`. Pastikan tabel PAT dan PMT aktif dan semua PID service sudah tercantum. Cek juga interval pengiriman.</p>
+                        <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
+                    </div>
+                </div>
+
+                <h2 id="galeri">6. Galeri Foto</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/mediakind-avp-chassis.jpg" alt="Chassis MediaKind AVP" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/mediakind-webgui.jpg" alt="Contoh Tampilan WebGUI AVP" onclick="bukaModal(this.src)">
+                </div>
+
+                <h2 id="catatan">7. Catatan Pribadi Anda</h2>
+                <div class="notes-container">
+                    <label for="personalNotes">Catatan ini HANYA tersimpan di browser Anda.</label>
+                    <textarea id="personalNotes" 
+                              placeholder="Contoh: MUX AVP 3000. IP Chassis 192.168.1.11. Modul MUX di Slot 5. Input ASI 1 (Klik), ASI 2 (Nasional). Output ASI 1 ke Pemancar."
+                              onkeyup="saveNotes('mediakind-mux')">
+                    </textarea>
+                </div>
+
+            </div> </div> </div> <div id="modalGambar" class="modal">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkFavoriteStatus('mediakind-mux');
+            loadChecklistStatus('mediakind-mux', 'interactiveChecklist');
+            loadNotes('mediakind-mux');
+        });
+    </script> 
+</body>
+</html>
