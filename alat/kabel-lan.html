@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Kabel LAN (Ethernet)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <script>
+        (function() {
+            const FONT_SIZE_KEY = 'manualBookFontSize';
+            const DEFAULT_FONT_SIZE = 'medium';
+            const savedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
+            
+            if (savedSize !== DEFAULT_FONT_SIZE) {
+                document.documentElement.classList.add(`font-size-${savedSize}`);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Panduan Kabel LAN (Ethernet) & RJ45</h1>
+        
+        <div class="font-controls">
+            <button id="font-decrease" class="font-button" onclick="changeFontSize('decrease')">A-</button>
+            <button id="font-reset" class="font-button" onclick="changeFontSize('reset')">A</button>
+            <button id="font-increase" class="font-button" onclick="changeFontSize('increase')">A+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali ke Daftar Alat</a>
+        
+        <button id="tombolFavorit" class="tombol tombol-favorit" 
+                onclick="toggleFavorite('kabel-lan', 'Kabel LAN & RJ45', 'Panduan penggunaan dan perawatan kabel Ethernet.')">
+            Tambahkan ke Favorit ⭐
+        </button>
+
+        <button class="tombol tombol-cetak" onclick="window.print()">
+            🖨️ Cetak Panduan
+        </button>
+
+        <div class="sop-layout-container">
+
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#pengenalan">1. Pengenalan Ethernet & RJ45</a>
+                <a href="#jenis">2. Jenis Kabel LAN (Cat)</a>
+                <a href="#penanganan">3. Penanganan & Perawatan</a>
+                <a href="#troubleshooting">4. Troubleshooting Umum</a>
+                <a href="#galeri">5. Galeri Foto</a>
+                <a href="#catatan">6. Catatan Pribadi</a>
+            </nav>
+
+            <div class="content-sop" id="content-sop">
+                <h2 id="pengenalan">1. Pengenalan Ethernet & RJ45</h2>
+                <p>Kabel LAN (Local Area Network) atau kabel Ethernet digunakan untuk menghubungkan perangkat dalam jaringan komputer, seperti menghubungkan Encoder, IRD, Switch, PC, ke jaringan IP. Kabel ini menggunakan konektor **RJ45** (Registered Jack 45), sebuah konektor modular 8 pin 8 contact (8P8C).</p>
+                [Image of Ethernet cable with RJ45 connector]
+
+                <h2 id="jenis">2. Jenis Kabel LAN (Kategori/Cat)</h2>
+                <p>Kategori kabel LAN menentukan kecepatan maksimum dan bandwidth yang didukung. Sangat penting menggunakan kategori yang sesuai untuk kebutuhan broadcast (terutama video over IP).</p>
+                <ul>
+                    <li><strong>Cat 5e (Enhanced):</strong> Mendukung kecepatan hingga 1 Gbps (Gigabit Ethernet) pada jarak hingga 100 meter. Minimum yang disarankan untuk jaringan modern.</li>
+                    <li><strong>Cat 6:</strong> Mendukung kecepatan hingga 1 Gbps hingga 100 meter, dan 10 Gbps hingga 55 meter. Memiliki *shielding* (pelindung) yang lebih baik dari Cat 5e, mengurangi *crosstalk* (interferensi antar kabel). **Direkomendasikan** untuk koneksi antar perangkat broadcast.</li>
+                    <li><strong>Cat 6a (Augmented):</strong> Mendukung kecepatan hingga 10 Gbps hingga 100 meter. Lebih tebal dan *shielding* lebih baik dari Cat 6. Ideal untuk infrastruktur jaringan utama.</li>
+                    <li><strong>Cat 7 & Cat 8:</strong> Mendukung kecepatan lebih tinggi (40 Gbps / 100 Gbps) tapi biasanya digunakan di *data center*, belum umum di broadcast.</li>
+                </ul>
+                <div class="warning">
+                    <strong>PENTING! Crimping & Standar Warna:</strong> Pastikan kabel di-*crimping* (dipasang konektor RJ45) dengan benar sesuai standar warna **T568A** atau **T568B** (keduanya harus konsisten di kedua ujung). Kesalahan urutan warna akan menyebabkan koneksi gagal atau berjalan lambat. Gunakan *LAN Tester* untuk memverifikasi koneksi setelah crimping.
+                </div>
+
+                <h2 id="penanganan">3. Penanganan & Perawatan Kabel</h2>
+                <ul>
+                    <li><strong>Hindari Tekukan Tajam & Tarikan Kuat:</strong> Sama seperti kabel SDI, jangan menekuk terlalu tajam atau menarik kabel dengan paksa.</li>
+                    <li><strong>Jauhkan dari Sumber Interferensi:</strong> Hindari menjalankan kabel LAN sejajar terlalu dekat dengan kabel power tegangan tinggi untuk meminimalkan EMI. Gunakan kabel STP (Shielded Twisted Pair) jika lingkungan banyak noise.</li>
+                    <li><strong>Lindungi Klip Konektor:</strong> Klip plastik pada konektor RJ45 mudah patah. Gunakan *boot* pelindung atau berhati-hati saat mencabut.</li>
+                    <li><strong>Gunakan Panjang yang Sesuai:</strong> Hindari kabel yang terlalu panjang dan menggulung berlebihan. Potong dan *crimping* sesuai kebutuhan.</li>
+                    <li><strong>Beri Label:</strong> Labeli kedua ujung kabel (perangkat asal, port, tujuan) untuk memudahkan manajemen jaringan.</li>
+                </ul>
+
+                <h2 id="troubleshooting">4. Troubleshooting Umum Kabel LAN</h2>
+                <ul>
+                    <li><strong>Tidak Ada Koneksi (No Link Light):</strong>
+                        <ul>
+                            <li>Periksa koneksi RJ45 di kedua ujung, pastikan terpasang dengan benar (klik).</li>
+                            <li>Coba ganti dengan kabel LAN lain yang dipastikan bagus.</li>
+                            <li>Pastikan port switch dan perangkat di ujung kabel menyala dan aktif.</li>
+                            <li>Periksa hasil crimping dengan LAN Tester, pastikan semua 8 pin terhubung benar.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Koneksi Lambat atau Putus-Putus (Intermittent):</strong>
+                        <ul>
+                            <li>Kabel mungkin rusak internal atau kualitasnya buruk (tidak sesuai kategori).</li>
+                            <li>Panjang kabel melebihi batas maksimum (100 meter untuk tembaga).</li>
+                            <li>Konektor RJ45 ter-crimping buruk atau mulai kendor/korosi. Coba crimping ulang.</li>
+                            <li>Interferensi (EMI). Coba pindahkan jalur kabel atau gunakan kabel STP.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Masalah PoE (Power over Ethernet):</strong>
+                        <ul>
+                            <li>Pastikan switch dan perangkat tujuan mendukung standar PoE yang sama (misal: 802.3af, 802.3at).</li>
+                            <li>Gunakan kabel Cat 6 atau lebih baik untuk PoE daya tinggi. Kabel Cat 5e mungkin tidak cukup.</li>
+                            <li>Pastikan total daya PoE yang dibutuhkan tidak melebihi kapasitas switch.</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h2 id="galeri">5. Galeri Foto</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/rj45-connector.jpg" alt="Konektor RJ45" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/lan-cable-categories.jpg" alt="Perbandingan Kategori Kabel LAN" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/t568a-t568b-wiring.png" alt="Standar Warna T568A dan T568B" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/lan-tester.jpg" alt="LAN Cable Tester" onclick="bukaModal(this.src)">
+                </div>
+
+                <h2 id="catatan">6. Catatan Pribadi Anda</h2>
+                <div class="notes-container">
+                    <label for="personalNotes">Catatan ini HANYA tersimpan di browser Anda.</label>
+                    <textarea id="personalNotes" 
+                              placeholder="Contoh: Gunakan standar T568B untuk semua crimping. Stok kabel Cat 6 Belden ada di gudang."
+                              onkeyup="saveNotes('kabel-lan')">
+                    </textarea>
+                </div>
+
+            </div> </div> </div> <div id="modalGambar" class="modal">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkFavoriteStatus('kabel-lan');
+            loadNotes('kabel-lan');
+        });
+    </script> 
+</body>
+</html>

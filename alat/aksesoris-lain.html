@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Aksesoris Lain</title>
+    <link rel="stylesheet" href="../style.css">
+    <script>/* Script Head */</script>
+</head>
+<body>
+    <header><h1>Panduan Cable Management & Test Equipment</h1><div class="font-controls">...</div></header>
+    <div class="container">
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali</a>
+        <button id="tombolFavorit" class="tombol tombol-favorit" onclick="toggleFavorite('aksesoris-lain', 'Aksesoris Lain', 'Panduan cable management & test equipment.')">Favorit ⭐</button>
+        <button class="tombol tombol-cetak" onclick="window.print()">🖨️ Cetak</button>
+        <div class="sop-layout-container">
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#cable-mgmt">1. Cable Management</a>
+                <a href="#test-equip">2. Test Equipment Dasar</a>
+                <a href="#catatan">3. Catatan Pribadi</a>
+            </nav>
+            <div class="content-sop" id="content-sop">
+                <div class="in-page-search-container">...</div>
+                
+                <h2 id="cable-mgmt">1. Cable Management (Manajemen Kabel)</h2>
+                <p>Manajemen kabel yang baik di rak peralatan sangat penting untuk:</p>
+                <ul>
+                    <li><strong>Sirkulasi Udara:** Kabel yang rapi tidak menghalangi aliran udara pendingin, mencegah overheat.</li>
+                    <li><strong>Kemudahan Akses & Maintenance:** Memudahkan teknisi saat perlu mencabut/memasang kabel atau perangkat.</li>
+                    <li><strong>Troubleshooting Cepat:** Kabel yang terlabel dan tertata rapi mempercepat penelusuran masalah.</li>
+                    <li><strong>Estetika & Profesionalisme.**</li>
+                </ul>
+                <h4>Alat Bantu Cable Management:</h4>
+                <ul>
+                    <li><strong>Cable Ties (Zip Ties):** Pengikat kabel plastik sekali pakai. Gunakan dengan hati-hati agar tidak terlalu kencang dan merusak kabel. </li>
+                    <li><strong>Velcro Straps:** Pengikat kabel berbahan velcro yang bisa dibuka-pasang berulang kali. Lebih aman untuk kabel data. </li>
+                    <li><strong>Horizontal Cable Manager:** Panel 1U/2U dengan slot atau cincin untuk merapikan kabel patch di depan rak. </li>
+                    <li><strong>Vertical Cable Manager:** Dipasang di sisi rak untuk menampung banyak kabel vertikal dari atas ke bawah.</li>
+                </ul>
+                <h4>Best Practice:</h4>
+                <ul>
+                    <li>Pisahkan jalur kabel power (listrik) dengan kabel data (SDI, LAN, Fiber) sebisa mungkin untuk mengurangi interferensi.</li>
+                    <li>Gunakan panjang kabel yang sesuai, hindari gulungan berlebih.</li>
+                    <li>Labeli kedua ujung semua kabel.</li>
+                    <li>Ikat kabel dalam bundel yang logis (misal: semua input ke switch A).</li>
+                </ul>
+
+                <h2 id="test-equip">2. Test Equipment Dasar</h2>
+                <p>Memiliki alat tes dasar sangat membantu dalam diagnosa masalah:</p>
+                <ul>
+                    <li><strong>LAN Tester:** Untuk memverifikasi koneksi kabel LAN RJ45 setelah crimping, memastikan semua 8 pin terhubung benar dan tidak ada korsleting. </li>
+                    <li><strong>Multimeter Digital:** Mengukur tegangan (AC/DC), resistansi, dan kontinuitas. Berguna untuk cek power supply, sekring, atau koneksi kabel putus. </li>
+                    <li><strong>Fiber Optic Light Source & Power Meter:** Untuk mengukur redaman (loss) sinyal pada kabel fiber optik, memastikan kualitas link. </li>
+                    <li><strong>SDI Signal Generator:** Menghasilkan sinyal SDI standar (color bars, test pattern) untuk menguji input perangkat atau jalur kabel. </li>
+                    <li><strong>Waveform Monitor/Vectorscope:** Alat analisis video SDI yang menampilkan representasi visual dari level luma (kecerahan), chroma (warna), dan timing sinyal. Penting untuk quality control. </li>
+                    <li><strong>RF Power Meter & Spectrum Analyzer:** (Lebih lanjut) Untuk mengukur daya output transmitter dan menganalisis spektrum frekuensi RF.</li>
+                </ul>
+                <div class="warning"><strong>PENTING!</strong> Gunakan test equipment sesuai petunjuk penggunaannya. Kesalahan penggunaan bisa merusak alat tes atau perangkat yang diuji.</div>
+
+                <h2 id="catatan">3. Catatan Pribadi Anda</h2>
+                <div class="notes-container">...<textarea id="personalNotes" onkeyup="saveNotes('aksesoris-lain')"></textarea></div>
+            </div>
+        </div>
+    </div>
+    <div id="modalGambar" class="modal">...</div>
+    <script src="../script.js"></script>
+    <script>/* Script Init */</script>
+</body>
+</html>

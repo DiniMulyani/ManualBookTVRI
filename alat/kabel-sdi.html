@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Kabel SDI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <script>
+        (function() {
+            const FONT_SIZE_KEY = 'manualBookFontSize';
+            const DEFAULT_FONT_SIZE = 'medium';
+            const savedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
+            
+            if (savedSize !== DEFAULT_FONT_SIZE) {
+                document.documentElement.classList.add(`font-size-${savedSize}`);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Panduan Kabel SDI & Konektor BNC</h1>
+        
+        <div class="font-controls">
+            <button id="font-decrease" class="font-button" onclick="changeFontSize('decrease')">A-</button>
+            <button id="font-reset" class="font-button" onclick="changeFontSize('reset')">A</button>
+            <button id="font-increase" class="font-button" onclick="changeFontSize('increase')">A+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali ke Daftar Alat</a>
+        
+        <button id="tombolFavorit" class="tombol tombol-favorit" 
+                onclick="toggleFavorite('kabel-sdi', 'Kabel SDI & BNC', 'Panduan penggunaan dan perawatan kabel SDI.')">
+            Tambahkan ke Favorit ⭐
+        </button>
+
+        <button class="tombol tombol-cetak" onclick="window.print()">
+            🖨️ Cetak Panduan
+        </button>
+
+        <div class="sop-layout-container">
+
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#pengenalan">1. Pengenalan SDI & BNC</a>
+                <a href="#jenis">2. Jenis Kabel SDI</a>
+                <a href="#penanganan">3. Penanganan & Perawatan</a>
+                <a href="#troubleshooting">4. Troubleshooting Umum</a>
+                <a href="#galeri">5. Galeri Foto</a>
+                <a href="#catatan">6. Catatan Pribadi</a>
+            </nav>
+
+            <div class="content-sop" id="content-sop">
+                <h2 id="pengenalan">1. Pengenalan SDI & Konektor BNC</h2>
+                <p>SDI (Serial Digital Interface) adalah standar antarmuka video digital profesional yang digunakan untuk transmisi sinyal video *uncompressed* dan *unencrypted* melalui kabel koaksial dengan konektor BNC. Audio digital juga sering disematkan (embedded) dalam sinyal SDI.</p>
+                <p>Konektor BNC (Bayonet Neill–Concelman) adalah jenis konektor RF yang umum digunakan dengan kabel koaksial. Konektor ini memiliki mekanisme pengunci putar (bayonet mount) yang memastikan koneksi aman.</p>
+                
+
+                <h2 id="jenis">2. Jenis Kabel SDI</h2>
+                <p>Kualitas kabel SDI sangat mempengaruhi jarak transmisi maksimum dan integritas sinyal, terutama untuk resolusi tinggi (HD/UHD).</p>
+                <ul>
+                    <li><strong>HD-SDI (SMPTE 292M):</strong> Mendukung resolusi hingga 1080i/720p (sekitar 1.5 Gbps).</li>
+                    <li><strong>3G-SDI (SMPTE 424M):</strong> Mendukung resolusi hingga 1080p60 (sekitar 3 Gbps). Ini standar yang paling umum saat ini.</li>
+                    <li><strong>6G-SDI & 12G-SDI (SMPTE ST-2081, ST-2082):</strong> Mendukung resolusi Ultra HD (4K) pada frame rate tinggi (sekitar 6 Gbps dan 12 Gbps). Memerlukan kabel koaksial berkualitas sangat tinggi.</li>
+                </ul>
+                <div class="warning">
+                    <strong>PENTING!</strong> Gunakan kabel koaksial dengan spesifikasi yang tepat (misal: RG-6 atau kabel broadcast khusus) dan konektor BNC 75 Ohm berkualitas baik. Jangan mencampur konektor 50 Ohm (untuk RF/radio) dengan sistem video 75 Ohm.
+                </div>
+
+                <h2 id="penanganan">3. Penanganan & Perawatan Kabel</h2>
+                <ul>
+                    <li><strong>Hindari Tekukan Tajam:</strong> Jangan menekuk kabel melebihi radius minimumnya (biasanya 5-10 kali diameter kabel). Tekukan tajam merusak struktur internal dan mengurangi performa.</li>
+                    <li><strong>Gulung dengan Benar:</strong> Gunakan metode gulungan *over-under* untuk mencegah kabel terpelintir. </li>
+                    <li><strong>Lindungi Konektor:</strong> Jangan menarik kabel dari konektornya. Pasang dan lepas konektor BNC dengan memutar bagian *bayonet*-nya, bukan menarik kabelnya. Jaga kebersihan pin konektor.</li>
+                    <li><strong>Beri Label:</strong> Beri label yang jelas pada kedua ujung kabel (sumber, tujuan, panjang) untuk memudahkan identifikasi dan troubleshooting.</li>
+                    <li><strong>Jangan Terinjak/Terjepit:</strong> Lindungi kabel dari kerusakan fisik, terutama di area lalu lintas tinggi. Gunakan pelindung kabel jika perlu.</li>
+                </ul>
+
+                <h2 id="troubleshooting">4. Troubleshooting Umum Kabel SDI</h2>
+                <ul>
+                    <li><strong>Gambar Hitam (No Signal):</strong>
+                        <ul>
+                            <li>Periksa koneksi BNC di kedua ujung, pastikan terkunci rapat.</li>
+                            <li>Coba ganti dengan kabel SDI lain yang dipastikan bagus.</li>
+                            <li>Pastikan perangkat sumber (output) dan tujuan (input) menyala dan dikonfigurasi dengan benar.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Gambar Berkedip/Intermittent:</strong>
+                        <ul>
+                            <li>Konektor BNC kendor atau kotor. Coba lepas, bersihkan, dan pasang kembali.</li>
+                            <li>Kabel mungkin rusak internal di dekat konektor karena sering ditarik. Coba gerakkan kabel di dekat konektor, lihat apakah gambar terpengaruh.</li>
+                            <li>Kabel terlalu panjang untuk bitrate/resolusi yang digunakan (signal loss). Gunakan kabel yang lebih pendek atau *repeater/reclocker* SDI.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Noise/Gangguan pada Gambar:</strong>
+                        <ul>
+                            <li>Kabel berkualitas buruk atau rusak.</li>
+                            <li>Interferensi elektromagnetik (EMI). Jauhkan kabel SDI dari kabel power atau sumber noise lainnya.</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h2 id="galeri">5. Galeri Foto</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/sdi-cable-types.jpg" alt="Jenis Kabel Koaksial untuk SDI" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/bnc-connector-parts.jpg" alt="Bagian Konektor BNC" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/sdi-distribution-amplifier.jpg" alt="SDI Distribution Amplifier" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/cable-protector.jpg" alt="Pelindung Kabel di Lantai" onclick="bukaModal(this.src)">
+                </div>
+
+                <h2 id="catatan">6. Catatan Pribadi Anda</h2>
+                <div class="notes-container">
+                    <label for="personalNotes">Catatan ini HANYA tersimpan di browser Anda.</label>
+                    <textarea id="personalNotes" 
+                              placeholder="Contoh: Kabel Belden 1694A bagus untuk 3G-SDI hingga 100m. Stok kabel 50m ada di rak B3."
+                              onkeyup="saveNotes('kabel-sdi')">
+                    </textarea>
+                </div>
+
+            </div> </div> </div> <div id="modalGambar" class="modal">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ID 'kabel-sdi' harus unik
+            checkFavoriteStatus('kabel-sdi');
+            // Checklist tidak ada di halaman ini
+            // loadChecklistStatus('kabel-sdi', 'interactiveChecklist'); 
+            loadNotes('kabel-sdi');
+        });
+    </script> 
+</body>
+</html>

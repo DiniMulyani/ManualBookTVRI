@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Fiber Optic Converter</title>
+    <link rel="stylesheet" href="../style.css">
+    <script>/* Script Head */</script>
+</head>
+<body>
+    <header><h1>Panduan Fiber Optic Converter (SDI)</h1><div class="font-controls">...</div></header>
+    <div class="container">
+        <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali</a>
+        <button id="tombolFavorit" class="tombol tombol-favorit" onclick="toggleFavorite('fiber-converter', 'Fiber Converter (SDI)', 'Panduan SDI-Fiber converter.')">Favorit ⭐</button>
+        <button class="tombol tombol-cetak" onclick="window.print()">🖨️ Cetak</button>
+        <div class="sop-layout-container">
+            <nav class="sticky-nav">
+                <h4>Menu Cepat</h4>
+                <a href="#pengenalan">1. Pengenalan</a>
+                <a href="#jenis">2. Jenis Fiber & Konektor</a>
+                <a href="#penggunaan">3. Penggunaan & Koneksi</a>
+                <a href="#troubleshooting">4. Troubleshooting</a>
+                <a href="#galeri">5. Galeri Foto</a>
+                <a href="#catatan">6. Catatan Pribadi</a>
+            </nav>
+            <div class="content-sop" id="content-sop">
+                <div class="in-page-search-container">...</div>
+                <h2 id="pengenalan">1. Pengenalan Fiber Converter</h2>
+                <p>Fiber Optic Converter (untuk SDI) adalah perangkat berpasangan (Transmitter/Tx dan Receiver/Rx) yang mengubah sinyal elektrik SDI menjadi sinyal optik untuk dikirim melalui kabel serat optik, dan sebaliknya. Ini memungkinkan transmisi video berkualitas tinggi dalam jarak sangat jauh (beberapa kilometer) tanpa degradasi.</p>
+                <h2 id="jenis">2. Jenis Fiber & Konektor Umum</h2>
+                <ul>
+                    <li><strong>Tipe Fiber:**
+                        <ul>
+                            <li>**Multi-Mode (MM):** Untuk jarak lebih pendek (hingga ~500m), kabel lebih tebal.</li>
+                            <li>**Single-Mode (SM):** Untuk jarak sangat jauh (puluhan km), kabel lebih tipis. **Umum digunakan di broadcast.**</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tipe Konektor:** Umumnya LC (kecil, klik) atau SC (lebih besar, klik). Pastikan Tx dan Rx menggunakan tipe yang sama. </li>
+                    <li><strong>Wavelength:** Sinyal optik dikirim pada panjang gelombang tertentu (misal: 1310nm, 1550nm). Tx dan Rx harus cocok.</li>
+                </ul>
+                <div class="warning"><strong>PERHATIAN!</strong> Jangan melihat langsung ke ujung kabel fiber atau port Tx saat aktif. Cahaya lasernya tidak terlihat tapi bisa merusak mata. Jaga kebersihan ujung konektor fiber, debu sedikit saja bisa mengganggu sinyal. Gunakan penutup debu saat tidak terpasang.</div>
+                <h2 id="penggunaan">3. Penggunaan & Koneksi</h2>
+                <ol>
+                    <li>Hubungkan output SDI dari sumber ke 'SDI IN' pada unit Transmitter (Tx).</li>
+                    <li>Hubungkan output Fiber dari Tx ke input Fiber Rx menggunakan kabel fiber optik yang sesuai (SM/MM, LC/SC).</li>
+                    <li>Hubungkan 'SDI OUT' dari unit Receiver (Rx) ke input perangkat tujuan.</li>
+                    <li>Hubungkan power ke kedua unit Tx dan Rx. Amati LED status (Power, SDI Lock, Fiber Link).</li>
+                </ol>
+                <h2 id="troubleshooting">4. Troubleshooting Umum</h2>
+                <ul>
+                    <li><strong>LED 'Fiber Link' Mati/Merah:</strong> Tidak ada koneksi optik. Cek kabel fiber (tidak putus/tertekuk tajam). Pastikan Tx & Rx terhubung benar (Tx -> Rx). Bersihkan konektor fiber. Pastikan wavelength cocok.</li>
+                    <li><strong>LED 'SDI Lock' Mati/Merah (di Tx atau Rx):</strong> Sinyal SDI tidak terdeteksi/valid. Cek kabel SDI & sumber/tujuan.</li>
+                    <li><strong>Gambar Output Jelek/Error:</strong> Konektor fiber kotor. Kabel fiber tertekuk. Tipe fiber tidak cocok (SM vs MM).</li>
+                </ul>
+                <h2 id="galeri">5. Galeri Foto</h2>
+                <div class="galeri-container">
+                    <img src="../aset/gambar/sdi-fiber-converter-pair.jpg" alt="Pasangan Tx/Rx Fiber Converter" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/fiber-optic-cable-sm-lc.jpg" alt="Kabel Fiber Single Mode LC" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/fiber-cleaner.jpg" alt="Pembersih Konektor Fiber" onclick="bukaModal(this.src)">
+                </div>
+                <h2 id="catatan">6. Catatan Pribadi Anda</h2>
+                <div class="notes-container">...<textarea id="personalNotes" onkeyup="saveNotes('fiber-converter')"></textarea></div>
+            </div>
+        </div>
+    </div>
+    <div id="modalGambar" class="modal">...</div>
+    <script src="../script.js"></script>
+    <script>/* Script Init */</script>
+</body>
+</html>
