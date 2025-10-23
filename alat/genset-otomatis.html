@@ -77,17 +77,17 @@
 
                 <h2 id="prosedur">2. Prosedur Penyalaan Manual Saat Darurat</h2>
                 <ol>
-                    <li>Pindahkan *Transfer Switch* dari posisi **AUTO** ke **MANUAL**.</li>
+                    <li>Pindahkan <strong>Transfer Switch</strong> dari posisi <strong>AUTO</strong> ke <strong>MANUAL</strong>.</li>
                     <li>Cek bahan bakar, oli, dan air pendingin pada Genset.</li>
-                    <li>Tekan tombol **START** pada panel kontrol Genset.</li>
+                    <li>Tekan tombol <strong> START </strong>pada panel kontrol Genset.</li>
                     <li>Tunggu Genset mencapai RPM dan tegangan stabil (sekitar 10-15 detik).</li>
-                    <li>Pindahkan *Transfer Switch* ke posisi **GENSET**.</li>
+                    <li>Pindahkan Transfer Switch ke posisi <strong>GENSET</strong>.</li>
                     <li>Monitor tegangan (V) dan Frekuensi (Hz) di panel utama.</li>
                 </ol>
 
                 <h2 id="checklist">2A. Checklist Harian Genset</h2>
                 <div class="checklist-container">
-                    <p>Lakukan pemeriksaan Genset harian saat *standby*.</p>
+                    <p>Lakukan pemeriksaan Genset harian saat standby.</p>
                     <div id="checklist-genset">
                         <label class="checklist-item">
                             <input type="checkbox" data-checklist-id="genset-item-1" onchange="saveChecklistStatus('genset-item-1', this.checked)">
@@ -158,13 +158,13 @@
 
                         <div class="wizard-solusi" data-solusi="solusi-fuel" style="display: none;">
                             <h4 class="solusi-title">Solusi: Masalah Bahan Bakar</h4>
-                            <p>Jika starter berputar tetapi mesin tidak menyala, cek jalur bahan bakar. Pastikan ada solar di tangki dan buka *valve* bahan bakar jika tertutup.</p>
+                            <p>Jika starter berputar tetapi mesin tidak menyala, cek jalur bahan bakar. Pastikan ada solar di tangki dan buka valve bahan bakar jika tertutup.</p>
                             <button class="tombol tombol-reset" onclick="resetWizard('genset')">Mulai Wizard Kembali</button>
                         </div>
                         
                         <div class="wizard-solusi" data-solusi="solusi-starter" style="display: none;">
                             <h4 class="solusi-title">Solusi: Kegagalan Starter Motor/Solenoid</h4>
-                            <p>Jika tidak ada respon listrik, starter motor atau solenoid mungkin rusak. Cek sekering utama di panel kontrol Genset. **Hubungi Teknisi Listrik.**</p>
+                            <p>Jika tidak ada respon listrik, starter motor atau solenoid mungkin rusak. Cek sekering utama di panel kontrol Genset. <strong>Hubungi Teknisi Listrik.</strong></p>
                             <button class="tombol tombol-reset" onclick="resetWizard('genset')">Mulai Wizard Kembali</button>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
 
                 <h2 id="catatan">7. Catatan Pribadi Anda</h2>
                 <div class="notes-container">
-                    <label for="personalNotesGenset">Tulis catatan, pengamatan, atau prosedur *fast start* Genset.</label>
+                    <label for="personalNotesGenset">Tulis catatan, pengamatan, atau prosedur fast start Genset.</label>
                     <textarea id="personalNotesGenset" placeholder="Masukkan catatan Anda di sini..." onkeyup="saveNote('Genset', this.value)"></textarea>
                 </div>
 
