@@ -102,17 +102,18 @@ body {
 }
 
 .full-height-sidebar {
-    width: var(--sidebar-width);
-    height: 100vh; /* Tinggi penuh viewport */
-    position: fixed; /* Kunci sidebar di tempatnya */
-    top: 0;
+    width: 280px; /* Lebar sidebar */
+    position: fixed; /* Tetap di kiri saat scroll */
     left: 0;
-    background-color: var(--color-header-bg); /* Mengambil warna header lama */
-    color: var(--color-white);
-    padding: 20px;
-    box-sizing: border-box; /* Padding dihitung di dalam lebar */
-    overflow-y: auto; /* Memungkinkan sidebar digulir jika isinya terlalu panjang */
-    z-index: 1000; /* Pastikan di atas konten lain */
+    top: 0;
+    bottom: 0;
+    background-color: #004a99; /* Biru sedikit lebih gelap */
+    color: #ffffff;
+    padding: 1.5rem 1rem; /* Padding atas/bawah & kiri/kanan */
+    display: flex;
+    flex-direction: column; /* Susun elemen ke bawah */
+    overflow-y: auto; /* Scroll jika konten panjang */
+    box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.1); /* Shadow halus di kanan */
 }
 
 .full-height-sidebar .logo {
@@ -134,10 +135,10 @@ body {
 
 .sidebar-divider {
     border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 20px 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15); /* Warna garis transparan */
+    margin: 0 0 1.5rem 0; /* Margin hanya di bawah */
 }
-
 .sidebar-font-controls {
     display: flex;
     justify-content: center;
@@ -150,11 +151,8 @@ body {
 }
 
 .main-content-area {
-    /* Mendorong konten ke kanan agar tidak tertutup sidebar */
-    margin-left: var(--sidebar-width); 
-    padding: 20px;
-    background-color: #f4f7f9; /* Beri warna latar belakang yang berbeda */
-    min-height: 100vh;
+    margin-left: 280px; /* Lebar sidebar */
+    padding: 2rem; /* Beri padding di area konten */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -196,59 +194,106 @@ header p {
     margin: 2rem auto;
     padding: 0 1rem;
 }
-
+.sidebar-search-box {
+    margin-bottom: 1.5rem;
+    position: relative; /* Untuk ikon (opsional) */
+}
 .sidebar-search-box input {
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 1em;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--color-gray-dark);
+    padding: 12px 15px; /* Padding input */
+    padding-left: 40px; /* Ruang untuk ikon */
+    font-size: 0.95rem;
+    font-family: 'Roboto', sans-serif;
+    border: none; /* Hilangkan border */
+    border-radius: 8px; /* Sudut tumpul */
+    background-color: rgba(255, 255, 255, 0.15); /* Background transparan */
+    color: #ffffff;
+    outline: none; /* Hilangkan outline saat fokus */
+    transition: background-color 0.3s ease;
+}
+.sidebar-search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
+.sidebar-search-box input:focus {
+    background-color: rgba(255, 255, 255, 0.25); /* Sedikit lebih terang saat fokus */
+}
+
+/* Tambahkan ikon search (opsional) */
+.sidebar-search-box::before {
+    content: '\f002'; /* Kode ikon search Font Awesome */
+    font-family: 'Font Awesome 6 Free'; /* Nama font */
+    font-weight: 900; /* Solid icon */
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+.sidebar-category-nav {
+    flex-grow: 1; /* Biarkan bagian ini mengisi sisa ruang */
+}
 /* Navigasi Kategori di Sidebar */
 .sidebar-category-nav h4 {
-    color: var(--color-secondary);
-    margin-top: 0;
-}
-.sidebar-category-nav ul {
-    list-style: none;
-    padding: 0;
-}
-.sidebar-category-nav li a {
-    display: block;
-    padding: 10px 5px;
-    color: var(--color-white);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background-color 0.2s;
-}
-.sidebar-category-nav li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: #a0cffc; /* Biru muda */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding-left: 10px; /* Sedikit indentasi */
 }
 
+.sidebar-category-nav ul {
+    list-style: none; /* Hapus bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-category-nav li {
+    margin-bottom: 0.5rem; /* Jarak antar link */
+}
+.sidebar-category-nav a {
+    display: block;
+    padding: 10px 15px; /* Padding link */
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 6px; /* Sudut tumpul */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.sidebar-category-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Highlight saat hover */
+    color: #ffffff;
+}
 /* Footer Sidebar */
 .sidebar-footer {
-    position: absolute; /* Menarik footer ke bawah */
-    bottom: 0;
-    width: 100%;
+    margin-top: 1.5rem; /* Jarak dari atas */
     text-align: center;
-    padding: 10px 0;
-    font-size: 0.8em;
-    opacity: 0.6;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* Media Query untuk Mobile */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .full-height-sidebar {
-        width: 100%; /* Sidebar mengambil penuh di mobile */
-        height: auto;
-        position: static; /* Non-aktifkan fixed position di mobile */
+        /* Anda bisa menambahkan logika untuk menyembunyikan/menampilkan sidebar
+           dengan JavaScript jika ingin membuat tombol toggle */
+        /* Contoh:
+        position: fixed;
+        left: -280px; 
+        transition: left 0.3s ease;
+        */
+       /* Untuk sementara, kita buat lebarnya 0 agar tidak mengganggu */
+       /* width: 0;
+       padding: 0;
+       overflow: hidden; */
+       /* Atau Anda bisa memilih untuk tidak menyembunyikannya */
     }
-    
     .main-content-area {
-        margin-left: 0; /* Hapus margin kiri di mobile */
+        margin-left: 0; /* Hapus margin jika sidebar disembunyikan */
+        padding: 1rem; /* Sesuaikan padding */
     }
 }
 
@@ -291,28 +336,56 @@ header p {
     background-color: #ffffff;
     border: 1px solid #e9ecef;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1.5rem; /* Pastikan padding cukup */
     text-decoration: none;
     color: #343a40;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Untuk pseudo-element border */
+    overflow: hidden;
 }
-
+.kartu-alat::before { /* Menggunakan pseudo-element untuk border hover */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0px; /* Lebar awal 0 */
+    background-color: #0056b3; /* Warna border */
+    transition: width 0.3s ease; 
+}
 .kartu-alat:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px); /* Efek angkat */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Shadow lebih jelas */
+}
+.kartu-alat:hover::before {
+    width: 6px; /* Lebar border saat hover */
 }
 
+.kartu-alat:hover h3 i {
+    color: #0056b3; /* Warna ikon jadi biru utama saat hover */
+}
 .kartu-alat h3 {
     color: #0056b3;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem; /* Sedikit lebih rapat */
     font-size: 1.25rem;
+    display: flex; /* Mengatur ikon dan teks */
+    align-items: center;
+    gap: 12px; /* Jarak antara ikon dan teks */
 }
+.kartu-alat h3 i {
+    font-size: 1.4em; /* Ukuran ikon */
+    color: #17a2b8; /* Warna ikon (biru info) */
+    min-width: 1.5em; /* Lebar minimum agar sejajar */
+    text-align: center;
+    transition: color 0.3s ease; /* Transisi warna ikon */
+}
+
 .kartu-alat p {
     font-size: 0.95rem;
     color: #6c757d;
+    padding-left: calc(1.5em + 12px); /* Beri indentasi agar sejajar dengan teks judul */
 }
-
 /* === [ HALAMAN DETAIL SOP ] === */
 
 /* --- TOMBOL-TOMBOL --- */
@@ -992,9 +1065,25 @@ mark {
 
 .sidebar-header-section {
     text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem; /* Jarak ke bawah */
+}
+
+.sidebar-header-section .logo {
+    width: 70px; /* Ukuran logo */
+    margin-bottom: 1rem;
+}
+
+.sidebar-header-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-header-section p {
+    font-size: 0.9rem;
+    color: #e0e0e0; /* Warna teks sekunder */
+    line-height: 1.4;
 }
 
 /* 1. Pengaturan Sidebar */
@@ -1128,8 +1217,15 @@ mark {
 
 .flow-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dua kolom */
+    grid-template-columns: 1fr; /* Default 1 kolom */
     gap: 1.5rem;
+}
+
+/* Buat 2 kolom di layar lebih besar */
+@media (min-width: 768px) {
+    .flow-container {
+        grid-template-columns: 1fr 1fr; 
+    }
 }
 
 .flow-card {
@@ -1140,11 +1236,18 @@ mark {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* Judul Card dengan Ikon */
 .flow-card h4 {
     color: #0056b3;
     font-family: 'Poppins', sans-serif;
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak ikon dan teks judul */
+}
+.flow-card h4 i {
+    color: #17a2b8; /* Warna ikon judul */
 }
 
 .flow-card p {
@@ -1153,36 +1256,67 @@ mark {
     margin-bottom: 1.5rem;
 }
 
+/* --- GAYA INFOGRAFIS DIMULAI DARI SINI --- */
 .flow-diagram {
     display: flex;
-    flex-wrap: wrap; /* Agar rapi di layar kecil */
-    align-items: center;
-    gap: 10px;
+    flex-wrap: wrap; 
+    align-items: center; 
+    gap: 10px; /* Jarak antar elemen */
+    padding-top: 10px; 
+    border-top: 1px dashed #e0e0e0; /* Garis pemisah */
 }
 
 .flow-step {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    background: linear-gradient(145deg, #f8f9fa, #ffffff); /* Gradient lembut */
+    border: 1px solid #e0e0e0;
+    border-radius: 50px; /* Bentuk pil */
+    padding: 8px 15px; /* Padding lebih pas */
+    font-family: 'Roboto', sans-serif; /* Font isi lebih jelas */
+    font-weight: 500; 
     color: #343a40;
-    flex-shrink: 0; /* Mencegah teks terpotong */
+    display: inline-flex; /* Agar ikon dan teks sejajar */
+    align-items: center;
+    gap: 8px; 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05); /* Shadow halus */
+    transition: transform 0.2s ease;
+    flex-grow: 1; /* Biarkan step memanjang jika perlu */
+    justify-content: center; /* Teks dan ikon di tengah */
 }
 
+.flow-step:hover {
+    transform: translateY(-2px);
+}
+
+/* Style untuk ikon di dalam step */
+.flow-step i {
+    font-size: 1.1em; 
+    color: #0056b3; 
+    width: 1.3em; /* Lebar tetap agar sejajar */
+    text-align: center;
+}
+
+/* Style untuk panah (ikon Font Awesome) */
 .flow-arrow {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #6c757d;
+    font-size: 1.2rem; /* Ukuran ikon panah */
+    color: #adb5bd; 
+    line-height: 1; 
+    padding: 0 5px; 
+    flex-shrink: 0; /* Jangan biarkan panah mengecil */
 }
 
-/* Buat alur sinyal jadi 1 kolom di HP */
-@media (max-width: 900px) {
-    .flow-container {
-        grid-template-columns: 1fr;
+/* Buat tata letak lebih baik di layar kecil */
+@media (max-width: 576px) {
+    .flow-diagram {
+        flex-direction: column; /* Susun ke bawah */
+        align-items: stretch; /* Lebarkan step */
+    }
+    .flow-arrow {
+        transform: rotate(90deg); /* Putar panah */
+        margin: 5px 0;
     }
 }
+
+/* --- AKHIR GAYA INFOGRAFIS --- */
 
 /* Sembunyikan alur sinyal saat dicetak */
 @media print {

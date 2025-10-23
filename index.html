@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,14 +43,13 @@
 
         <div class="sidebar-category-nav">
             <h4>Pilih Kategori Alat</h4>
-            <ul>
-                <li><a href="#peralatanUtama">Peralatan Utama Siaran</a></li>
+            <ul> <li><a href="#peralatanUtama">Peralatan Utama Siaran</a></li>
                 <li><a href="#infrastruktur">Infrastruktur & Jaringan</a></li>
                 <li><a href="#pendukungDaya">Sistem Pendukung & Daya</a></li>
                 <li><a href="#pengolahanJaringan">Alat Pengolahan dan Jaringan Sinyal</a></li>
-                <li><a href="#alurSinyal">Gambaran Alur Sinyal</a></li> </ul>
+                <li><a href="#alurSinyal">Gambaran Alur Sinyal</a></li>
                 <li><a href="#aksesorisKabel">Aksesoris & Kabel Pendukung</a></li>
-        </div>
+            </ul> </div>
         
         <div class="sidebar-footer">
             <p>© 2025 TVRI Riau</p>
@@ -78,39 +77,39 @@
             <h2>Gambaran Alur Sinyal Siaran</h2>
             <div class="flow-container">
                 
-                <div class="flow-card">
-                    <h4>Alur Pemancar Terestrial (DVB-T2)</h4>
-                    <p>Alur ini digunakan untuk siaran digital yang diterima pemirsa di rumah via antena UHF.</p>
+               <div class="flow-card">
+                    <h4><i class="fas fa-tower-broadcast"></i> Alur Pemancar Terestrial (DVB-T2)</h4>
+                    <p>Alur untuk siaran digital yang diterima pemirsa di rumah via antena UHF.</p>
                     <div class="flow-diagram">
-                        <div class="flow-step"><span>Studio</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>MCR</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>Encoder</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>MUX</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>Pemancar</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>Antena UHF</span></div>
+                        <div class="flow-step"><i class="fas fa-video"></i><span>Studio</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-sliders-h"></i><span>MCR</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-microchip"></i><span>Encoder</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-project-diagram"></i><span>MUX</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-broadcast-tower"></i><span>Pemancar</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-satellite-dish"></i><span>Antena UHF</span></div>
                     </div>
                 </div>
 
                 <div class="flow-card">
-                    <h4>Alur Distribusi Satelit (MCPC)</h4>
-                    <p>Alur ini digunakan TVRI Pusat untuk mengirim program ke stasiun-stasiun daerah (seperti Riau).</p>
-                    <div class="flow-diagram">
-                        <div class="flow-step"><span>MCR</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>Encoder</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>MUX</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>Modulator (MCPC)</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>Parabola (Uplink)</span></div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step"><span>Satelit</span></div>
+                    <h4><i class="fas fa-satellite"></i> Alur Distribusi Satelit (MCPC)</h4>
+                    <p>Alur TVRI Pusat mengirim program ke stasiun-stasiun daerah.</p>
+                    <div class="flow-diagram flow-diagram-satelit"> 
+                        <div class="flow-step"><i class="fas fa-sliders-h"></i><span>MCR</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-microchip"></i><span>Encoder</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-project-diagram"></i><span>MUX</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-wave-square"></i><span>Modulator</span></div> 
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-satellite-dish"></i><span>Parabola Uplink</span></div>
+                        <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
+                        <div class="flow-step"><i class="fas fa-satellite"></i><span>Satelit</span></div>
                     </div>
                 </div>
 
@@ -119,132 +118,189 @@
         <nav id="daftarAlat">
             <h2>Daftar Peralatan</h2>
 
-            <h3 class="kategori-heading" id="peralatanUtama">Peralatan Utama Siaran</h3>
+           <h3 class="kategori-heading" id="peralatanUtama">Peralatan Utama Siaran</h3>
             <div class="kartu-alat-container" id="kartuAlatContainerUtama">
-                <a href="alat/transmitter-xyz.html" class="kartu-alat">
-                    <h3>Transmitter R&S (Contoh: THU9)</h3>
-                    <p>Panduan pengoperasian dan keselamatan kerja untuk transmitter utama.</p>
+                
+                <a href="alat/rohde-schwarz-transmitter.html" class="kartu-alat">
+                    <h3><i class="fas fa-broadcast-tower"></i> Transmitter R&S (Contoh: THU9)</h3>
+                    <p>Panduan operasional transmitter DVB-T2 Rohde & Schwarz.</p>
+                </a>
+
+                <a href="alat/audio-mixer-abc.html" class="kartu-alat">
+                    <h3><i class="fas fa-sliders-h"></i> Audio Mixer Tipe ABC</h3>
+                    <p>Prosedur standar untuk mixing audio siaran.</p>
+                </a>
+
+                <a href="alat/video-switcher-v100.html" class="kartu-alat">
+                    <h3><i class="fas fa-photo-video"></i> Video Switcher V-100</h3>
+                    <p>Panduan penggunaan dan troubleshooting video switcher.</p>
                 </a>
             </div>
-            
+
             <h3 class="kategori-heading" id="infrastruktur">Infrastruktur & Jaringan</h3>
             <div class="kartu-alat-container" id="kartuAlatContainerInfrastruktur">
+                
                 <a href="alat/antena-uhf.html" class="kartu-alat">
-                    <h3>Antena Pemancar UHF</h3>
-                    <p>Prosedur pengawasan harian dan troubleshooting nilai SWR (Standing Wave Ratio).</p>
+                    <h3><i class="fas fa-satellite-dish"></i> Antena Pemancar UHF</h3>
+                    <p>Prosedur pengawasan harian dan troubleshooting nilai SWR.</p>
                 </a>
                 
                 <a href="alat/mdf-patch-panel.html" class="kartu-alat">
-                    <h3>Main Distribution Frame (MDF)</h3>
+                    <h3><i class="fas fa-network-wired"></i> Main Distribution Frame (MDF)</h3>
                     <p>Prosedur standar untuk patching sinyal dan dokumentasi koneksi.</p>
                 </a>
             </div>
 
             <h3 class="kategori-heading" id="pendukungDaya">Sistem Pendukung & Daya</h3>
             <div class="kartu-alat-container" id="kartuAlatContainerDaya">
+                
                 <a href="alat/genset-otomatis.html" class="kartu-alat">
-                    <h3>Generator Set (Genset) Otomatis</h3>
+                    <h3><i class="fas fa-bolt"></i> Generator Set (Genset) Otomatis</h3>
                     <p>Panduan pengoperasian manual, monitoring, dan troubleshooting darurat listrik.</p>
+                </a>
+                
+                 <a href="alat/ups.html" class="kartu-alat">
+                     <h3><i class="fas fa-battery-full"></i> Uninterruptible Power Supply (UPS)</h3>
+                     <p>Panduan jenis, penggunaan, maintenance, dan troubleshooting UPS.</p>
+                </a>
+
+                 <a href="alat/pdu.html" class="kartu-alat">
+                     <h3><i class="fas fa-plug"></i> Power Distribution Unit (PDU)</h3>
+                     <p>Panduan jenis, penggunaan, dan keselamatan PDU.</p>
                 </a>
             </div>
 
             <h3 class="kategori-heading" id="pengolahanJaringan">Alat Pengolahan dan Jaringan Sinyal</h3>
             <div class="kartu-alat-container" id="kartuAlatContainerJaringan">
-                 <a href="alat/encoder.html" class="kartu-alat">
-                    <h3>Encoder (Input & Output)</h3>
+                
+                <a href="alat/encoder.html" class="kartu-alat">
+                    <h3><i class="fas fa-microchip"></i> Encoder (Input & Output)</h3>
                     <p>Tutorial konfigurasi input SDI dan output IP/ASI pada encoder.</p>
                 </a>
-
-                <a href="alat/switch-hpe-1420.html" class="kartu-alat">
-                    <h3>Network Switch (Multiviewer)</h3>
-                    <p>Panduan operasional dan troubleshooting switch HPE 1420 (Unmanaged).</p>
-                </a>
-
-                <a href="alat/dtv-gryphon-pve2.html" class="kartu-alat">
-                    <h3>Encoder Gryphon PVE-2</h3>
-                    <p>Panduan konfigurasi encoder DTV Innovations PVE-2 (Managed).</p>
-                </a>
-                
-                <a href="alat/dibsys-hd-encoder.html" class="kartu-alat">
-                    <h3>Encoder DIBSYS (Seri-ENC)</h3>
-                    <p>Panduan konfigurasi encoder HD DIBSYS.</p>
-                </a>
+                 <a href="alat/dtv-gryphon-pve2.html" class="kartu-alat">
+                     <h3><i class="fas fa-microchip"></i> Encoder Gryphon PVE-2</h3>
+                     <p>Panduan konfigurasi encoder DTV Innovations PVE-2 (Managed).</p>
+                 </a>
+                 <a href="alat/dibsys-hd-encoder.html" class="kartu-alat">
+                     <h3><i class="fas fa-microchip"></i> Encoder DIBSYS (Seri-ENC)</h3>
+                     <p>Panduan konfigurasi encoder HD DIBSYS.</p>
+                 </a>
+                 <a href="alat/enc-ds1000.html" class="kartu-alat">
+                     <h3><i class="fas fa-microchip"></i> Encoder ENC-DS1000</h3>
+                     <p>Panduan konfigurasi encoder ENC-DS1000.</p>
+                 </a>
 
                 <a href="alat/harmonic-proview-7100.html" class="kartu-alat">
-                    <h3>IRD Harmonic ProView 7100</h3>
-                    <p>Panduan menerima (decode) sinyal satelit/IP.</p>
-                </a>
-
-                <a href="alat/wellav-umh-160r.html" class="kartu-alat">
-                    <h3>IRD Wellav UMH 160R</h3>
-                    <p>Panduan menerima (decode) sinyal satelit DVB-S/S2.</p>
-                </a>
-
-                <a href="alat/enc-ds1000.html" class="kartu-alat">
-                    <h3>Encoder ENC-DS1000</h3>
-                    <p>Panduan konfigurasi encoder ENC-DS1000.</p>
-                </a>
-
-                <a href="alat/wisi-chameleon-gn20b.html" class="kartu-alat">
-                    <h3>IRD Module Wisi GN20B</h3>
-                    <p>Panduan konfigurasi modul IRD satelit Wisi Chameleon.</p>
-                </a>
+                     <h3><i class="fas fa-satellite"></i> IRD Harmonic ProView 7100</h3>
+                     <p>Panduan menerima (decode) sinyal satelit/IP.</p>
+                 </a>
+                 <a href="alat/wellav-umh-160r.html" class="kartu-alat">
+                     <h3><i class="fas fa-satellite"></i> IRD Wellav UMH 160R</h3>
+                     <p>Panduan menerima (decode) sinyal satelit DVB-S/S2.</p>
+                 </a>
+                 <a href="alat/wisi-chameleon-gn20b.html" class="kartu-alat">
+                     <h3><i class="fas fa-satellite"></i> IRD Module Wisi GN20B</h3>
+                     <p>Panduan konfigurasi modul IRD satelit Wisi Chameleon.</p>
+                 </a>
 
                 <a href="alat/harmonic-prostream-mux.html" class="kartu-alat">
-                    <h3>MUX Harmonic ProStream</h3>
+                    <h3><i class="fas fa-project-diagram"></i> MUX Harmonic ProStream</h3>
                     <p>Panduan konfigurasi multiplexer Harmonic.</p>
                 </a>
                 <a href="alat/mediakind-avp-mux.html" class="kartu-alat">
-                    <h3>MUX MediaKind AVP</h3>
+                    <h3><i class="fas fa-project-diagram"></i> MUX MediaKind AVP</h3>
                     <p>Panduan konfigurasi multiplexer MediaKind (Ericsson).</p>
                 </a>
                 <a href="alat/rohde-schwarz-avhe-mux.html" class="kartu-alat">
-                    <h3>MUX R&S AVHE</h3>
+                    <h3><i class="fas fa-project-diagram"></i> MUX R&S AVHE</h3>
                     <p>Panduan konfigurasi multiplexer Rohde & Schwarz.</p>
                 </a>
+                
+                <a href="alat/switch-hpe-1420.html" class="kartu-alat">
+                    <h3><i class="fas fa-ethernet"></i> Network Switch (Multiviewer)</h3>
+                    <p>Panduan operasional dan troubleshooting switch HPE 1420 (Unmanaged).</p>
+                </a>
+
+            </div>
+
+            <h3 class="kategori-heading" id="aksesorisKabel">Aksesoris & Kabel Pendukung</h3>
+            <div class="kartu-alat-container" id="kartuAlatContainerAksesoris">
+                
+                <a href="alat/kabel-sdi.html" class="kartu-alat">
+                    <h3><i class="fas fa-wave-square"></i> Kabel SDI & Konektor BNC</h3>
+                    <p>Panduan jenis, penanganan, perawatan, dan troubleshooting kabel SDI.</p>
+                </a>
+                <a href="alat/kabel-lan.html" class="kartu-alat">
+                    <h3><i class="fas fa-network-wired"></i> Kabel LAN & Konektor RJ45</h3>
+                    <p>Panduan jenis, penanganan, dan troubleshooting kabel Ethernet.</p>
+                </a>
+                <a href="alat/kabel-power.html" class="kartu-alat">
+                    <h3><i class="fas fa-plug"></i> Kabel Power AC</h3>
+                    <p>Panduan jenis konektor, keselamatan, dan troubleshooting kabel listrik.</p>
+                </a>
+                <a href="alat/sdi-da.html" class="kartu-alat">
+                    <h3><i class="fas fa-arrows-alt-h"></i> SDI Distribution Amplifier (DA)</h3>
+                    <p>Panduan penggunaan dan troubleshooting SDI DA.</p>
+                </a>
+                <a href="alat/fiber-converter.html" class="kartu-alat">
+                    <h3><i class="fas fa-arrows-h"></i> Fiber Optic Converter (SDI)</h3>
+                    <p>Panduan penggunaan converter SDI ke Fiber Optik dan sebaliknya.</p>
+                </a>
+                <a href="alat/patch-panel.html" class="kartu-alat">
+                    <h3><i class="fas fa-ethernet"></i> Patch Panel (BNC & RJ45)</h3>
+                    <p>Panduan penggunaan dan best practice patch panel.</p>
+                </a>
+                <a href="alat/aksesoris-lain.html" class="kartu-alat">
+                    <h3><i class="fas fa-tools"></i> Cable Management & Test Equipment</h3>
+                    <p>Panduan merapikan kabel dan pengenalan alat tes dasar.</p>
+                </a>
+
+            </div>
         </nav>
-                <section id="aksesorisKabel">
+               <section id="aksesorisKabel">
             <h3 class="kategori-heading">Aksesoris & Kabel Pendukung</h3>
             <div class="kartu-alat-container" id="kartuAlatContainerAksesoris">
+                
                 <a href="alat/kabel-sdi.html" class="kartu-alat">
-                    <h3>Kabel SDI & Konektor BNC</h3>
+                    <h3><i class="fas fa-wave-square"></i> Kabel SDI & Konektor BNC</h3>
                     <p>Panduan jenis, penanganan, perawatan, dan troubleshooting kabel SDI.</p>
                 </a>
 
                 <a href="alat/kabel-lan.html" class="kartu-alat">
-                    <h3>Kabel LAN & Konektor RJ45</h3>
+                    <h3><i class="fas fa-network-wired"></i> Kabel LAN & Konektor RJ45</h3>
                     <p>Panduan jenis, penanganan, dan troubleshooting kabel Ethernet.</p>
                 </a>
 
                 <a href="alat/kabel-power.html" class="kartu-alat">
-                    <h3>Kabel Power AC</h3>
+                    <h3><i class="fas fa-plug"></i> Kabel Power AC</h3>
                     <p>Panduan jenis konektor, keselamatan, dan troubleshooting kabel listrik.</p>
                 </a>
-
+                
                 <a href="alat/sdi-da.html" class="kartu-alat">
-                    <h3>SDI Distribution Amplifier (DA)</h3>
+                    <h3><i class="fas fa-arrows-alt-h"></i> SDI Distribution Amplifier (DA)</h3>
                     <p>Panduan penggunaan dan troubleshooting SDI DA.</p>
                 </a>
                 <a href="alat/fiber-converter.html" class="kartu-alat">
-                    <h3>Fiber Optic Converter (SDI)</h3>
+                    <h3><i class="fas fa-arrows-h"></i> Fiber Optic Converter (SDI)</h3>
                     <p>Panduan penggunaan converter SDI ke Fiber Optik dan sebaliknya.</p>
                 </a>
                 <a href="alat/patch-panel.html" class="kartu-alat">
-                    <h3>Patch Panel (BNC & RJ45)</h3>
+                    <h3><i class="fas fa-ethernet"></i> Patch Panel (BNC & RJ45)</h3> 
                     <p>Panduan penggunaan dan best practice patch panel.</p>
                 </a>
                 <a href="alat/pdu.html" class="kartu-alat">
-                    <h3>Power Distribution Unit (PDU)</h3>
+                    <h3><i class="fas fa-plug"></i> Power Distribution Unit (PDU)</h3>
                     <p>Panduan jenis, penggunaan, dan keselamatan PDU.</p>
                 </a>
                 <a href="alat/ups.html" class="kartu-alat">
-                    <h3>Uninterruptible Power Supply (UPS)</h3>
+                    <h3><i class="fas fa-battery-full"></i> Uninterruptible Power Supply (UPS)</h3>
                     <p>Panduan jenis, penggunaan, maintenance, dan troubleshooting UPS.</p>
                 </a>
                 <a href="alat/aksesoris-lain.html" class="kartu-alat">
-                    <h3>Cable Management & Test Equipment</h3>
+                    <h3><i class="fas fa-tools"></i> Cable Management & Test Equipment</h3>
                     <p>Panduan merapikan kabel dan pengenalan alat tes dasar.</p>
                 </a>
+
             </div>
         </section>
         <footer class="main-footer"> <p>© 2025 TVRI Stasiun Riau | Proyek Manual Book Digital</p> </footer>
