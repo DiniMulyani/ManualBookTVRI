@@ -286,45 +286,73 @@ header p {
 
 /* Media Query untuk Mobile */
 @media (max-width: 992px) {
-    /* --- Perbaikan Sidebar Mobile --- */
+
+    /* --- Perbaikan Sidebar Mobile (index.html) --- */
     .full-height-sidebar {
         left: -280px; /* Sembunyikan di luar layar */
-        /* Tambahkan class .sidebar-open { left: 0; } via JS untuk memunculkan */
+        /* Anda perlu JS untuk menambahkan class .sidebar-open { left: 0; } */
     }
     .main-content-area {
-        margin-left: 0; /* Hapus margin kiri konten */
-        padding: 1.5rem; /* Kurangi padding konten */
+        margin-left: 0; /* Hapus margin kiri konten di index.html */
+        padding: 1.5rem; /* Kurangi padding konten di index.html */
     }
 
-    /* --- Perbaikan Layout SOP Mobile --- */
+    /* --- Perbaikan Layout SOP Mobile (Halaman Alat) --- */
     .sop-layout-container {
-        grid-template-columns: 1fr; /* Tumpuk menu dan konten */
+        display: block; /* Hapus grid, biarkan elemen menumpuk */
     }
     .sticky-nav {
         position: static; /* Hapus sticky */
         width: 100%;
-        margin-bottom: 1.5rem;
-        /* Anda bisa menambahkan scroll horizontal jika menu panjang */
-        /* overflow-x: auto; white-space: nowrap; */
+        margin-bottom: 1.5rem; /* Beri jarak bawah dari menu ke konten */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Shadow sedikit berbeda */
     }
-    html {
-        scroll-padding-top: 80px; /* Sesuaikan padding scroll untuk header mobile */
+    .sticky-nav h4 {
+         margin-bottom: 0.5rem; /* Kurangi jarak bawah judul menu */
+         padding-bottom: 0.5rem;
     }
+    .sticky-nav a {
+        padding: 8px 10px; /* Padding link menu sedikit lebih kecil */
+        font-size: 0.9rem;
+    }
+
+    /* --- Penyesuaian Tombol Atas (Halaman Alat) --- */
+    .container .tombol { /* Target tombol di dalam .container halaman alat */
+        margin-bottom: 0.75rem; /* Kurangi jarak bawah tombol */
+        display: block; /* Buat tombol memenuhi lebar & menumpuk */
+        width: 100%;
+        text-align: center;
+        float: none !important; /* Hapus float agar tidak mengganggu */
+        margin-right: 0 !important; /* Hapus margin kanan */
+    }
+    .tombol-kembali {
+        margin-bottom: 1rem; /* Beri jarak lebih sedikit di tombol kembali */
+    }
+
+
+    /* --- Penyesuaian Konten SOP Mobile --- */
     .content-sop {
         padding: 1.5rem; /* Kurangi padding konten SOP */
+        margin-top: 0; /* Hapus margin atas karena menu sudah tidak di samping */
+    }
+    html {
+        scroll-padding-top: 80px; /* Jarak scroll target dari header mobile (sesuaikan jika header lebih tinggi) */
     }
 
     /* Ukuran font heading di mobile */
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.6rem; }
+    header h1 { font-size: 1.4rem; } /* Header halaman detail */
+    h2 { font-size: 1.6rem; margin-top: 2rem; } /* Judul bagian SOP */
+    .content-sop h2:first-of-type { margin-top: 0; }
     h3 { font-size: 1.3rem; }
-    .kategori-heading { font-size: 1.4rem; }
-    .kartu-alat h3 { font-size: 1.1rem; }
+    .kategori-heading { font-size: 1.4rem; } /* index.html */
+    .kartu-alat h3 { font-size: 1.1rem; } /* index.html */
 
-    /* Kontrol font di header detail, mungkin perlu dipindah/dihapus di mobile */
+    /* Kontrol font di header detail, dipindah ke bawah judul */
     .font-controls {
-        /* display: none; */ /* Opsi 1: Sembunyikan */
-         position: static; transform: none; margin-top: 10px; /* Opsi 2: Pindah ke bawah judul */
+         position: static;
+         transform: none;
+         margin-top: 10px;
+         justify-content: center; /* Pusatkan tombol font */
     }
 }
 
@@ -1319,7 +1347,9 @@ mark {
     .flow-arrow { transform: rotate(90deg); margin: 5px 0; }
     .welcome-section { padding: 1rem 1.5rem; }
     .welcome-section h3 { font-size: 1.2rem; }
+    .kartu-alat-container { grid-template-columns: 1fr; } /* Pastikan 1 kolom di layar sangat kecil */
 }
+
 /* --- AKHIR GAYA INFOGRAFIS --- */
 
 /* Sembunyikan alur sinyal saat dicetak */
