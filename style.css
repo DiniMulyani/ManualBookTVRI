@@ -45,7 +45,7 @@ html {
 
 .sticky-nav {
     position: sticky;
-    top: 100px; /* Jarak dari header sticky */
+    top: 0px; /* Jarak dari header sticky */
     background: var(--background-white);
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -1342,13 +1342,44 @@ mark {
 }
 
 /* Buat tata letak lebih baik di layar kecil */
-@media (max-width: 576px) {
-    .flow-diagram { flex-direction: column; align-items: stretch; }
-    .flow-arrow { transform: rotate(90deg); margin: 5px 0; }
-    .welcome-section { padding: 1rem 1.5rem; }
-    .welcome-section h3 { font-size: 1.2rem; }
-    .kartu-alat-container { grid-template-columns: 1fr; } /* Pastikan 1 kolom di layar sangat kecil */
+@media (max-width: 768px) {
+    /* Ubah arah flow jadi vertikal di layar kecil */
+    .flow-diagram {
+        flex-direction: column;
+        align-items: center; /* Tengah */
+        justify-content: center;
+        gap: 10px; /* Jarak antar elemen */
+    }
+
+    /* Putar panah ke bawah */
+    .flow-arrow {
+        transform: rotate(90deg);
+        margin: 8px 0;
+        display: inline-block;
+    }
+
+    /* Pastikan step-nya rapi di layar kecil */
+    .flow-step {
+        width: 100%;
+        max-width: 280px; /* biar gak terlalu lebar */
+        text-align: center;
+    }
+
+    /* Optional, kecilkan font judul agar proporsional */
+    .welcome-section h3 {
+        font-size: 1.1rem;
+    }
+
+    .welcome-section {
+        padding: 1rem 1.5rem;
+    }
+
+    /* Kalau kamu punya grid kartu alat */
+    .kartu-alat-container {
+        grid-template-columns: 1fr; /* 1 kolom di HP */
+    }
 }
+
 
 /* --- AKHIR GAYA INFOGRAFIS --- */
 
