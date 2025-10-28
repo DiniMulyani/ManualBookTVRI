@@ -128,7 +128,6 @@ body {
 .full-height-sidebar .logo {
     width: 60px;
     height: auto;
-    filter: brightness(2); /* Membuat logo lebih terang di latar belakang gelap */
 }
 
 .full-height-sidebar h2 {
