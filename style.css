@@ -1113,7 +1113,6 @@ mark {
 .sidebar-header-section .logo {
     width: 70px;
     margin-bottom: 1rem;
-    filter: brightness(0) invert(1); /* Ubah logo jadi putih */
 }
 .sidebar-header-section h2 {
     font-size: 1.4rem;
