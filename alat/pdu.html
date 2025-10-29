@@ -22,40 +22,41 @@
                 <a href="#catatan">6. Catatan Pribadi</a>
             </nav>
             <div class="content-sop" id="content-sop">
-                <div class="in-page-search-container">...</div>
+                <div class="in-page-search-container"></div>
                 <h2 id="pengenalan">1. Pengenalan PDU</h2>
                 <p>Power Distribution Unit (PDU) adalah perangkat yang dirancang untuk mendistribusikan daya listrik ke beberapa perangkat di dalam rak server atau rak peralatan. Ini pada dasarnya adalah stop kontak ekstensi yang lebih canggih dan aman untuk lingkungan rak.</p>
                 <h2 id="jenis">2. Jenis-jenis PDU</h2>
                 <ul>
-                    <li><strong>Basic PDU:** Hanya berfungsi sebagai stop kontak ekstensi, tanpa fitur tambahan.</li>
-                    <li><strong>Metered PDU:** Menampilkan informasi penggunaan daya (Ampere, Volt, Watt) melalui layar LCD atau antarmuka jaringan. Berguna untuk monitoring beban.</li>
-                    <li><strong>Switched PDU:** Memungkinkan setiap outlet (stop kontak) dinyalakan/dimatikan dari jarak jauh melalui antarmuka jaringan. Berguna untuk me-reboot perangkat yang 'hang'.</li>
-                    <li><strong>Managed/Intelligent PDU:** Gabungan metered dan switched, ditambah fitur monitoring lingkungan (suhu, kelembaban) dan kontrol akses yang lebih canggih.</li>
+                    <li>Basic PDU: Hanya berfungsi sebagai stop kontak ekstensi, tanpa fitur tambahan.</li>
+                    <li>Metered PDU: Menampilkan informasi penggunaan daya (Ampere, Volt, Watt) melalui layar LCD atau antarmuka jaringan. Berguna untuk monitoring beban.</li>
+                    <li>Switched PDU: Memungkinkan setiap outlet (stop kontak) dinyalakan/dimatikan dari jarak jauh melalui antarmuka jaringan. Berguna untuk me-reboot perangkat yang 'hang'.</li>
+                    <li>Managed/Intelligent PDU: Gabungan metered dan switched, ditambah fitur monitoring lingkungan (suhu, kelembaban) dan kontrol akses yang lebih canggih.</li>
                 </ul>
                 <h2 id="keselamatan">3. Instalasi & Keselamatan</h2>
                 <div class="warning"><strong>PERHATIAN! BEBAN LISTRIK</strong>
                 <ul>
-                    <li><strong>Pasang dengan Benar:** Pasang PDU secara vertikal atau horizontal di rak sesuai desainnya. Pastikan terpasang kencang.</li>
-                    <li><strong>Ketahui Kapasitas Maksimum:** Setiap PDU memiliki batas arus maksimum (misal: 16A, 32A). Jangan pernah melebihi batas ini. Hitung total konsumsi daya (Watt atau Ampere) semua perangkat yang terhubung.</li>
-                    <li><strong>Gunakan Stopkontak Sumber yang Sesuai:** Hubungkan PDU ke stopkontak (biasanya dari UPS) yang memiliki kapasitas arus dan grounding yang memadai.</li>
-                    <li><strong>Manajemen Kabel Power:** Rapikan kabel power dari perangkat ke PDU agar tidak mengganggu sirkulasi udara atau terjepit.</li>
-                    <li><strong>Hindari Daisy-Chain:** Jangan menyambungkan satu PDU ke PDU lain (daisy-chaining) karena sangat berbahaya dan meningkatkan risiko overload.</li>
+                    <li>Pasang dengan Benar: Pasang PDU secara vertikal atau horizontal di rak sesuai desainnya. Pastikan terpasang kencang.</li>
+                    <li>Ketahui Kapasitas Maksimum: Setiap PDU memiliki batas arus maksimum (misal: 16A, 32A). Jangan pernah melebihi batas ini. Hitung total konsumsi daya (Watt atau Ampere) semua perangkat yang terhubung.</li>
+                    <li>Gunakan Stopkontak Sumber yang Sesuai: Hubungkan PDU ke stopkontak (biasanya dari UPS) yang memiliki kapasitas arus dan grounding yang memadai.</li>
+                    <li>Manajemen Kabel Power: Rapikan kabel power dari perangkat ke PDU agar tidak mengganggu sirkulasi udara atau terjepit.</li>
+                    <li>Hindari Daisy-Chain: Jangan menyambungkan satu PDU ke PDU lain (daisy-chaining) karena sangat berbahaya dan meningkatkan risiko overload.</li>
                 </ul></div>
                 <h2 id="troubleshooting">4. Troubleshooting Umum</h2>
                 <ul>
-                    <li><strong>Tidak Ada Power di Semua Outlet PDU:** Cek kabel input PDU ke sumber listrik (UPS/PLN). Cek MCB sumber. Cek sekring (jika ada) di PDU itu sendiri.</li>
-                    <li><strong>Tidak Ada Power di Satu Outlet:** Outlet mungkin rusak. Jika PDU switched/managed, cek status outlet tersebut di antarmuka web. Coba outlet lain.</li>
-                    <li><strong>PDU Overload (Breaker Trip):** Beban total melebihi kapasitas PDU. Cabut beberapa perangkat atau pindahkan ke PDU lain.</li>
-                    <li><strong>Tidak Bisa Akses WebGUI (Managed PDU):** Cek koneksi kabel LAN ke PDU. Pastikan IP Address PDU dan laptop satu segmen.</li>
+                    <li>Tidak Ada Power di Semua Outlet PDU: Cek kabel input PDU ke sumber listrik (UPS/PLN). Cek MCB sumber. Cek sekring (jika ada) di PDU itu sendiri.</li>
+                    <li>Tidak Ada Power di Satu Outlet: Outlet mungkin rusak. Jika PDU switched/managed, cek status outlet tersebut di antarmuka web. Coba outlet lain.</li>
+                    <li>PDU Overload (Breaker Trip): Beban total melebihi kapasitas PDU. Cabut beberapa perangkat atau pindahkan ke PDU lain.</li>
+                    <li>Tidak Bisa Akses WebGUI (Managed PDU): Cek koneksi kabel LAN ke PDU. Pastikan IP Address PDU dan laptop satu segmen.</li>
                 </ul>
                 <h2 id="galeri">5. Galeri Foto</h2>
                 <div class="galeri-container">
-                    <img src="../aset/gambar/pdu-basic-horizontal.jpg" alt="PDU Basic Horizontal" onclick="bukaModal(this.src)">
-                    <img src="../aset/gambar/pdu-metered-vertical.jpg" alt="PDU Metered Vertical" onclick="bukaModal(this.src)">
-                    <img src="../aset/gambar/pdu-switched-webgui.jpg" alt="Antarmuka Web PDU Switched" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/basic pdu.jpeg" alt="PDU Basic Horizontal" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/metered pdu.jpeg" alt="PDU Metered Vertical" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/switched pdu.jpeg" alt="PDU Switched" onclick="bukaModal(this.src)">
+                     <img src="../aset/gambar/intelligent pdu.jpeg" alt="PDU Intelligent" onclick="bukaModal(this.src)">
                 </div>
                 <h2 id="catatan">6. Catatan Pribadi Anda</h2>
-                <div class="notes-container">...<textarea id="personalNotes" onkeyup="saveNotes('pdu')"></textarea></div>
+                <div class="notes-container"><textarea id="personalNotes" onkeyup="saveNotes('pdu')"></textarea></div>
             </div>
         </div>
     </div>

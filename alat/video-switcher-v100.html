@@ -47,18 +47,15 @@
                 <a href="#k3">1. Peringatan K3</a>
                 <a href="#prosedur">2. Prosedur Start-Up</a>
                 <a href="#checklist">2A. Checklist Pra-Operasi</a>
-                <a href="#video">3. Video Tutorial</a>
                 <a href="#wizard">4. Troubleshooting</a>
-                <a href="#galeri">5. Galeri Foto</a>
-                <a href="#dokumen">6. Dokumen PDF</a>
-                <a href="#catatan">7. Catatan Pribadi</a>
+                <a href="#catatan">5. Catatan Pribadi</a>
             </nav>
 
             <div class="content-sop" id="content-sop">
                 <h2 id="k3">1. Peringatan Keselamatan Kerja (K3)</h2>
                 <div class="warning">
                     <strong>PERHATIAN!</strong>
-                    <p>Hindari menumpahkan cairan di atas panel. Pastikan ventilasi udara pada alat tidak terhalang untuk mencegah overheat. Gunakan gelang anti-statis saat menyentuh port I/O.</p>
+                    <p>Hindari menumpahkan cairan di atas panel. Pastikan ventilasi udara pada alat tidak terhalang untuk mencegah overheat. </p>
                 </div>
 
                 <h2 id="prosedur">2. Prosedur Start-Up (Menyalakan)</h2>
@@ -93,15 +90,6 @@
                         Reset Checklist
                     </button>
                 </div>
-
-                <h2 id="video">3. Video Tutorial Pengoperasian</h2>
-                <div class="video-container">
-                    <video controls>
-                        <source src="../aset/video/placeholder-video.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung tag video. (Contoh Video)
-                    </video>
-                </div>
-                
                 <h2 id="wizard">4. Wizard Troubleshooting Interaktif</h2>
                 <div id="troubleshootingWizard" class="wizard-container">
                     <div id="step-start" class="wizard-step" style="display: block;">
@@ -134,19 +122,7 @@
                         <button class="tombol tombol-reset" onclick="goToStep('step-start')">Mulai Lagi</button>
                     </div>
                 </div>
-
-                <h2 id="galeri">5. Galeri Foto & Diagram Alat</h2>
-                <div class="galeri-container">
-                    <img src="../aset/gambar/placeholder.png" alt="Contoh Gambar 1" onclick="bukaModal(this.src)">
-                    <img src="../aset/gambar/placeholder.png" alt="Contoh Gambar 2" onclick="bukaModal(this.src)">
-                </div>
-
-                <h2 id="dokumen">6. Dokumen Pendukung (PDF)</h2>
-                <a href="../aset/dokumen/placeholder-manual.pdf" target="_blank" class="tombol tombol-pdf">
-                    Buka Manual Asli Video Switcher (PDF)
-                </a>
-
-                <h2 id="catatan">7. Catatan Pribadi Anda</h2>
+                <h2 id="catatan">5. Catatan Pribadi Anda</h2>
                 <div class="notes-container">
                     <label for="personalNotes">Catatan ini HANYA tersimpan di browser Anda.</label>
                     <textarea id="personalNotes" 

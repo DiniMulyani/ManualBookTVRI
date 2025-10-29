@@ -8,7 +8,7 @@
     <script>/* Script Head */</script>
 </head>
 <body>
-    <header><h1>Panduan Uninterruptible Power Supply (UPS)</h1><div class="font-controls">...</div></header>
+    <header><h1>Panduan Uninterruptible Power Supply (UPS)</h1><div class="font-controls"></div></header>
     <div class="container">
         <a href="../index.html" class="tombol tombol-kembali">&larr; Kembali</a><button class="tombol tombol-cetak" onclick="window.print()">🖨️ Cetak</button>
         <div class="sop-layout-container">
@@ -23,14 +23,14 @@
                 <a href="#catatan">7. Catatan Pribadi</a>
             </nav>
             <div class="content-sop" id="content-sop">
-                <div class="in-page-search-container">...</div>
+                <div class="in-page-search-container"></div>
                 <h2 id="pengenalan">1. Pengenalan UPS</h2>
                 <p>Uninterruptible Power Supply (UPS) adalah perangkat yang menyediakan daya listrik cadangan dari baterai internal saat sumber listrik utama (PLN) padam. Selain itu, UPS juga berfungsi melindungi perangkat dari lonjakan tegangan (surge), penurunan tegangan (sag), dan noise listrik.</p>
                 <h2 id="jenis">2. Jenis-jenis UPS</h2>
                 <ul>
-                    <li><strong>Offline/Standby:** Paling dasar. Hanya aktif saat listrik padam. Ada jeda waktu transfer beberapa milidetik.</li>
-                    <li><strong>Line-Interactive:** Seperti offline, tapi memiliki AVR (Automatic Voltage Regulation) untuk menstabilkan tegangan naik/turun tanpa memakai baterai. Jeda transfer lebih cepat. **Umum digunakan untuk server/peralatan jaringan.**</li>
-                    <li><strong>Online/Double-Conversion:** Paling canggih dan mahal. Terus-menerus mengubah AC ke DC (untuk charge baterai) lalu kembali ke AC murni untuk output. Tidak ada jeda transfer (zero transfer time). Memberikan proteksi terbaik. **Ideal untuk peralatan broadcast kritis.**</li>
+                    <li>Offline/Standby: Paling dasar. Hanya aktif saat listrik padam. Ada jeda waktu transfer beberapa milidetik.</li>
+                    <li>Line-Interactive: Seperti offline, tapi memiliki AVR (Automatic Voltage Regulation) untuk menstabilkan tegangan naik/turun tanpa memakai baterai. Jeda transfer lebih cepat. Umum digunakan untuk server/peralatan jaringan.</li>
+                    <li>Online/Double-Conversion: Paling canggih dan mahal. Terus-menerus mengubah AC ke DC (untuk charge baterai) lalu kembali ke AC murni untuk output. Tidak ada jeda transfer (zero transfer time). Memberikan proteksi terbaik. Ideal untuk peralatan broadcast kritis.</li>
                 </ul>
                 <h2 id="penggunaan">3. Instalasi & Penggunaan</h2>
                 <ol>
@@ -51,17 +51,16 @@
                 </ul>
                 <h2 id="troubleshooting">5. Troubleshooting Umum (Alarm Bunyi/LED)</h2>
                 <ul>
-                    <li><strong>Bunyi Beep Terus-menerus saat Listrik Normal:** Biasanya alarm 'Replace Battery'.</li>
-                    <li><strong>Bunyi Beep Cepat saat Listrik Padam:** Baterai hampir habis, segera matikan perangkat secara normal.</li>
-                    <li><strong>LED/LCD Menunjukkan 'Overload':** Beban melebihi kapasitas UPS. Cabut beberapa perangkat.</li>
-                    <li><strong>LED/LCD Menunjukkan 'Fault':** Ada masalah internal UPS. Hubungi teknisi.</li>
+                    <li>Bunyi Beep Terus-menerus saat Listrik Normal: Biasanya alarm 'Replace Battery'.</li>
+                    <li>Bunyi Beep Cepat saat Listrik Padam: Baterai hampir habis, segera matikan perangkat secara normal.</li>
+                    <li>LED/LCD Menunjukkan 'Overload': Beban melebihi kapasitas UPS. Cabut beberapa perangkat.</li>
+                    <li>LED/LCD Menunjukkan 'Fault': Ada masalah internal UPS. Hubungi teknisi.</li>
                 </ul>
                 <h2 id="galeri">6. Galeri Foto</h2>
                 <div class="galeri-container">
-                    <img src="../aset/gambar/ups-line-interactive-rackmount.jpg" alt="UPS Line-Interactive Rackmount" onclick="bukaModal(this.src)">
-                    <img src="../aset/gambar/ups-online-tower.jpg" alt="UPS Online Tower" onclick="bukaModal(this.src)">
-                    <img src="../aset/gambar/ups-battery-replacement.jpg" alt="Penggantian Baterai UPS" onclick="bukaModal(this.src)">
-                    <img src="../aset/gambar/ups-monitoring-software.jpg" alt="Software Monitoring UPS" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/ups offline.jpeg" alt="UPS Offline" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/ups online.jpeg" alt="UPS Online Tower" onclick="bukaModal(this.src)">
+                    <img src="../aset/gambar/ups line interactive.jpeg" alt="UPS Line Interactive" onclick="bukaModal(this.src)">
                 </div>
                 <h2 id="catatan">7. Catatan Pribadi Anda</h2>
                 <div class="notes-container">...<textarea id="personalNotes" onkeyup="saveNotes('ups')"></textarea></div>
